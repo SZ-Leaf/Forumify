@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import RepliesFetcher from "../../../components/replies/repliesFetcher";
 
-const GamingThreadDetailsPage = () => {
+const ThreadDetailsPage = () => {
    useSecurityVerify();
 
    const { id } = useParams();
@@ -78,4 +78,4 @@ const GamingThreadDetailsPage = () => {
    )
 }
 
-export default GamingThreadDetailsPage;
+export default ThreadDetailsPage;

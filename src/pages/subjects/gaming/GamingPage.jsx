@@ -26,6 +26,11 @@ const GamesPage = () => {
             
          <>
             <Header />
+
+            <Link to="/threads/create">
+               <button>Create New Thread</button>
+            </Link>
+
             <h1>Sports Threads</h1>
 
             {threads ? (
@@ -47,7 +52,7 @@ const GamesPage = () => {
                      ) : (
                         <p>Created by: Unknown User</p>
                      )}
-                     <Link to={`/gaming/details/${thread.id}`}>Open thread</Link>
+                     <Link to={`/thread/details/${thread.id}`}>Open thread</Link>
                      </article>
                   ))}
                </>

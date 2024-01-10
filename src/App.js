@@ -5,8 +5,9 @@ import SubjectPage from './pages/user/SubjectPage';
 import SportsPage from './pages/subjects/sports/SportsPage';
 import MoviesPage from './pages/subjects/movies/MoviesPage';
 import DashboardPage from './pages/admin/DashboardPage';
-import GamingThreadDetailsPage from './pages/subjects/gaming/GamingThreadDetails';
+import ThreadDetailsPage from './pages/subjects/threadsDetails/ThreadDetails';
 import GamesPage from './pages/subjects/gaming/GamingPage';
+import CreateThread from './pages/subjects/threadsDetails/CreateThread';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path='/movies' element={<MoviesPage/>} />
         <Route path='/gaming' element={<GamesPage/>} />
         <Route path="/admin/" element={<DashboardPage />} />
-        <Route path='/gaming/details/:id' element={<GamingThreadDetailsPage />} />
+        <Route path='/thread/details/:id' element={<ThreadDetailsPage />} />
+        <Route path='/thread/create' element={<CreateThread />} />
       </Routes>
     </BrowserRouter>
   );
