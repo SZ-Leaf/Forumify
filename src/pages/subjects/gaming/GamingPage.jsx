@@ -1,0 +1,67 @@
+import { useEffect, useState } from "react";
+import Header from "../../user/Header"
+import { Link } from "react-router-dom";
+import UserDetailsFetcher from "../../../components/user/userDetails";
+import { useSecurityVerify } from "../../securityCheck/security";
+
+const GamesPage = () => {
+
+   useSecurityVerify();
+   const [threads, setThreads] = useState(null);
+
+   useEffect(() =>{
+      (async ()  =>{
+         const threadsResponse = await fetch("http://localhost:3001/api/threads");
+
+         const threadsResponseData = await threadsResponse.json();
+
+         setThreads(threadsResponseData);
+      })();
+   }, []);
+
+   return(
+
+      <UserDetailsFetcher>
+         {(userDetails) => (
+            
+         <>
+            <Header />
+            <h1>Sports Threads</h1>
+
+            {threads ? (
+               <>
+               {threads
+                  // we only want the threads with subjectId = 2 which corresponds to gaming subject
+                  .filter((thread) => thread.SubjectId === 2)
+                  .map((thread) => (
+                     
+                     // key = special attribute used by React internally to optimize the process of updating and rendering components in a list. Not strictly required but makes it easier for react in updating the elements rendered.
+                     <article key={thread.id}>
+
+                     <h2>{thread.title}</h2>
+
+                     {/* here we are finding the user with the id link to userId foreign key in threads to show the author */}
+                     
+                     {userDetails && userDetails.find((user) => user.id === thread.UserId) ? (
+                        <p>Author: {userDetails.find((user) => user.id === thread.UserId).username}</p>
+                     ) : (
+                        <p>Created by: Unknown User</p>
+                     )}
+                     <Link to={`/gaming/details/${thread.id}`}>Open thread</Link>
+                     </article>
+                  ))}
+               </>
+            ) : (
+               // if threads not loaded yet, show charging on the screen in the meanwhile
+               <p>Loading</p>
+            )}
+         </>
+
+         )}
+
+      </UserDetailsFetcher>
+      
+   );
+};
+
+export default GamesPage;

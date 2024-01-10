@@ -1,0 +1,32 @@
+.body{
+   width: 100%;
+   height: 100vh;
+      
+   .subjectbody{
+      background-color: #9DB2BF;
+      height: 100%;
+
+      .main-subject-div{
+         
+         margin: auto;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         width: 90%;
+         background-color: #27374D;
+
+         .title{
+            width: 100%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 500;
+         }
+
+         .subject-div{
+            width: 30%;
+            height: 400px;
+            text-align: center;
+         }
+      }
+   }
+}

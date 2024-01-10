@@ -1,0 +1,27 @@
+.body {
+  width: 100%;
+  height: 100vh;
+}
+.body .subjectbody {
+  background-color: #9DB2BF;
+  height: 100%;
+}
+.body .subjectbody .main-subject-div {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  background-color: #27374D;
+}
+.body .subjectbody .main-subject-div .title {
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+}
+.body .subjectbody .main-subject-div .subject-div {
+  width: 30%;
+  height: 400px;
+  text-align: center;
+}/*# sourceMappingURL=subjectstyle.css.map */

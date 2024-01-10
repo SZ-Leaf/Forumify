@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from './pages/user/Homepage';
+import SubjectPage from './pages/user/SubjectPage';
+import SportsPage from './pages/subjects/sports/SportsPage';
+import MoviesPage from './pages/subjects/movies/MoviesPage';
+import DashboardPage from './pages/admin/DashboardPage';
+import GamingThreadDetailsPage from './pages/subjects/gaming/GamingThreadDetails';
+import GamesPage from './pages/subjects/gaming/GamingPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage/>} />
+        <Route path='/subjects' element={<SubjectPage/>} />
+        <Route path='/sports' element={<SportsPage/>} />
+        <Route path='/movies' element={<MoviesPage/>} />
+        <Route path='/gaming' element={<GamesPage/>} />
+        <Route path="/admin/" element={<DashboardPage />} />
+        <Route path='/gaming/details/:id' element={<GamingThreadDetailsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
