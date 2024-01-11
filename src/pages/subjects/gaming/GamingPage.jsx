@@ -3,8 +3,12 @@ import Header from "../../user/Header"
 import { Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useSecurityVerify } from "../../securityCheck/security";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const GamesPage = () => {
+
+   const navigate = useNavigate();
 
    useSecurityVerify();
    const [threads, setThreads] = useState(null);
@@ -19,6 +23,21 @@ const GamesPage = () => {
       })();
    }, []);
 
+   // Function to decode user ID and RoleId from JWT token
+   const getLoggedInUserDetails = () => {
+      const token = localStorage.getItem("jwt");
+      if (token) {
+         const decodedToken = jwtDecode(token);
+         return {
+            userId: decodedToken.UserId,
+            roleId: decodedToken.RoleId,
+         }
+      }
+      return null;
+   };
+
+   // console.log(getLoggedInUserDetails()?.roleId)
+
    return(
 
       <UserDetailsFetcher>
@@ -27,11 +46,11 @@ const GamesPage = () => {
          <>
             <Header />
 
-            <Link to="/threads/create">
-               <button>Create New Thread</button>
-            </Link>
+               <h1>Gaming Threads</h1>
+               <button onClick={() => navigate("/thread/create", { state : { subjectId: 2 } })}>
+                  Create New Thread
+               </button>
 
-            <h1>Sports Threads</h1>
 
             {threads ? (
                <>
@@ -48,9 +67,16 @@ const GamesPage = () => {
                      {/* here we are finding the user with the id link to userId foreign key in threads to show the author */}
                      
                      {userDetails && userDetails.find((user) => user.id === thread.UserId) ? (
+                        <>
                         <p>Author: {userDetails.find((user) => user.id === thread.UserId).username}</p>
-                     ) : (
-                        <p>Created by: Unknown User</p>
+
+                        {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === thread.UserId).id ||
+                        getLoggedInUserDetails()?.roleId === 1 ? (
+                          <button>Delete</button>
+                        ) : null}
+                        </>
+                     ) : ( 
+                        <p>Author: Unknown User</p>
                      )}
                      <Link to={`/thread/details/${thread.id}`}>Open thread</Link>
                      </article>

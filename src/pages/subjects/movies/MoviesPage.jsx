@@ -3,11 +3,15 @@ import Header from "../../user/Header"
 import { Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useSecurityVerify } from "../../securityCheck/security";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const MoviesPage = () => {
 
    useSecurityVerify();
    const [threads, setThreads] = useState(null);
+
+   const navigate = useNavigate();
 
    useEffect(() =>{
       (async ()  =>{
@@ -19,6 +23,19 @@ const MoviesPage = () => {
       })();
    }, []);
 
+   // Function to decode user ID and RoleId from JWT token
+   const getLoggedInUserDetails = () => {
+      const token = localStorage.getItem("jwt");
+      if (token) {
+         const decodedToken = jwtDecode(token);
+         return {
+            userId: decodedToken.UserId,
+            roleId: decodedToken.RoleId,
+         }
+      }
+      return null;
+   };
+
    return(
 
       <UserDetailsFetcher>
@@ -26,7 +43,12 @@ const MoviesPage = () => {
             
          <>
             <Header />
-            <h1>Sports Threads</h1>
+
+            <h1>Movie Threads</h1>
+
+            <button onClick={() => navigate("/thread/create", { state : { subjectId: 3 } })}>
+               Create New Thread
+            </button>
 
             {threads ? (
                <>
@@ -36,7 +58,14 @@ const MoviesPage = () => {
                      <article key={thread.id}>
                         <h2>{thread.title}</h2>
                         {userDetails && userDetails.find((user) => user.id === thread.UserId) ? (
-                           <p>Created by: {userDetails.find((user) => user.id === thread.UserId).username}</p>
+                           <>
+                           <p>Author: {userDetails.find((user) => user.id === thread.UserId).username}</p>
+   
+                           {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === thread.UserId).id ||
+                           getLoggedInUserDetails()?.roleId === 1 ? (
+                             <button>Delete</button>
+                           ) : null}
+                           </>
                         ) : (
                            <p>Author: Unknown User</p>
                         )}
