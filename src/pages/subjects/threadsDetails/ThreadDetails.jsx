@@ -1,28 +1,49 @@
 import { useEffect, useState } from "react";
 import { useSecurityVerify } from "../../securityCheck/security"
-import Header from "../../user/Header"
-import { useParams } from "react-router-dom";
+import Header from "../../../components/user/Header"
+import { useNavigate, useParams } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import RepliesFetcher from "../../../components/replies/repliesFetcher";
+import { jwtDecode } from "jwt-decode";
+import DeleteThread from "../../../components/threads/threadDelete";
 
 const ThreadDetailsPage = () => {
    useSecurityVerify();
 
+   const navigate = useNavigate();
+
    const { id } = useParams();
 
-   const [gamingThread, setGamingThread] = useState(null);
+   const [thread, setThread] = useState(null);
 
    useEffect(() =>{
       (async () =>{
-         const gamingThreadResponse = await fetch("http://localhost:3001/api/threads/"+ id);
-         const gamingThreadResponseData = await gamingThreadResponse.json();
+         const threadResponse = await fetch("http://localhost:3001/api/threads/"+ id);
+         const threadResponseData = await threadResponse.json();
 
-         setGamingThread(gamingThreadResponseData);
+         setThread(threadResponseData);
          }
       )();
       // eslint-disable-next-line react-hooks/exhaustive-deps
    },[]);
 
+   const getLoggedInUserDetails = () => {
+      const token = localStorage.getItem("jwt");
+      if (token) {
+         const decodedToken = jwtDecode(token);
+         return {
+            userId: decodedToken.UserId,
+            roleId: decodedToken.RoleId,
+         }
+      }
+      return null;
+   };
+
+   const handleDeleteThread = async (deletedThreadId) => {
+      navigate('/subjects');
+   };
+
+   console.log(thread);
 
    return (
 
@@ -30,51 +51,64 @@ const ThreadDetailsPage = () => {
 
          {(replies) => (
 
-      <UserDetailsFetcher>
+         <UserDetailsFetcher>
 
-         {(userDetails) => (
-            <>
+            {(userDetails) => (
+               <>
 
-               <Header />
+                  <Header />
 
-               {gamingThread ? (
-                  <>
+                  {thread ? (
+                     <>
 
-                     <h2>{gamingThread.data.title}</h2>
-                     <p>{gamingThread.data.content}</p>
+                        <h2>{thread.data.title}</h2>
+                        <p>{thread.data.content}</p>
 
-                     {userDetails && userDetails.find((user) => user.id === gamingThread.data.UserId) ? (
-                        <p>Author: {userDetails.find((user) => user.id === gamingThread.data.UserId).username}</p>
-                     ) : (
-                        <p>Created by: Unknown User</p>
-                     )}
+                        {userDetails && userDetails.find((user) => user.id === thread.data.UserId) ? (
 
-                     {replies ? (
-                        replies
-                        .filter((reply) => reply.ThreadId === gamingThread.data.id)
-                        .map((filteredReply) => (
-                          <div key={filteredReply.id}>
-                            {/* Render each filtered reply as needed */}
-                            <p>{filteredReply.content}</p>
-                            <p>Author: {userDetails.find((user) => user.id === filteredReply.UserId)?.username || "Unknown User"}</p>
-                          </div>
-                        ))
-                     ):(
-                        <p>Loading Replies.</p>
-                     )}
+                           <>
+                           <p>Author: {userDetails.find((user) => user.id === thread.data.UserId).username}</p>
 
-                  </>
-               ):(
-                  <p>Loading Thread</p>
-               )}
 
-            </>
-         )}
+                           {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === thread.data.UserId).id ||
+                           getLoggedInUserDetails()?.roleId === 1 ? (
+                              
+                           <>
+                              <DeleteThread threadId={thread.data.id} onDelete={() => handleDeleteThread(thread.data.id)} />
+                           </>
+                           ) : null}
+                           </>
+                           
+                        ) : (
+                           <p>Author: Unknown User</p>
+                        )}
 
-      </UserDetailsFetcher>
-   )}
+                        {replies ? (
+                           replies
+                           .filter((reply) => reply.ThreadId === thread.data.id)
+                           .map((filteredReply) => (
+                           <div key={filteredReply.id}>
+                              {/* Render each filtered reply as needed */}
+                              <p>{filteredReply.content}</p>
+                              <p>Author: {userDetails.find((user) => user.id === filteredReply.UserId)?.username || "Unknown User"}</p>
+                           </div>
+                           ))
+                        ):(
+                           <p>Loading Replies.</p>
+                        )}
 
-   </RepliesFetcher>
+                     </>
+                  ):(
+                     <p>Loading Thread</p>
+                  )}
+
+               </>
+            )}
+
+         </UserDetailsFetcher>
+      )}
+
+      </RepliesFetcher>
    )
 }
 

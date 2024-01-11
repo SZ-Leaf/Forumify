@@ -18,7 +18,7 @@ function App() {
         <Route path='/sports' element={<SportsPage/>} />
         <Route path='/movies' element={<MoviesPage/>} />
         <Route path='/gaming' element={<GamesPage/>} />
-        <Route path="/admin/" element={<DashboardPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path='/thread/details/:id' element={<ThreadDetailsPage />} />
         <Route path='/thread/create' element={<CreateThread />} />
       </Routes>

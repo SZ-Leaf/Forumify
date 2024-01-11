@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSecurityVerify } from "../../securityCheck/security";
-import Header from "../../user/Header";
+import Header from "../../../components/user/Header";
 import { useLocation } from "react-router-dom";
 // import { jwtDecode } from "jwt-decode";
 

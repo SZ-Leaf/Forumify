@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import Header from "../../user/Header"
+import Header from "../../../components/user/Header"
 import { Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useSecurityVerify } from "../../securityCheck/security";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import DeleteThread from "../../../components/threads/threadDelete";
 
 const MoviesPage = () => {
 
@@ -36,6 +37,11 @@ const MoviesPage = () => {
       return null;
    };
 
+   const handleDeleteThread = async (deletedThreadId) => {
+      // Filter out the deleted thread from the state
+      setThreads((prevThreads) => prevThreads.filter((thread) => thread.id !== deletedThreadId));
+   };
+
    return(
 
       <UserDetailsFetcher>
@@ -63,7 +69,9 @@ const MoviesPage = () => {
    
                            {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === thread.UserId).id ||
                            getLoggedInUserDetails()?.roleId === 1 ? (
-                             <button>Delete</button>
+                              <>
+                                 <DeleteThread threadId={thread.id} onDelete={() => handleDeleteThread(thread.id)} />
+                             </>
                            ) : null}
                            </>
                         ) : (

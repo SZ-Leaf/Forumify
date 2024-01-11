@@ -1,11 +1,23 @@
 import { useSecurityVerify } from "../securityCheck/security";
+import AdminHeader from "../../components/admin/AdminHeader";
+import { Link } from "react-router-dom";
 
 const DashboardPage = () => {
   useSecurityVerify();
 
   return (
     <>
-      <h2>Vous êtes bien connecté en tant qu'admin</h2>
+      <AdminHeader />
+      <h2>Welcome Administrator</h2>
+
+      <ul>
+        <li>
+          <Link to="/users-panel" className="dashboardlink"><p>Users Panel</p></Link>
+        </li>
+        <li>
+          <Link to="/subjects" className="subjectslink"><p>Subjects</p></Link>
+        </li>
+      </ul>
     </>
   );
 };
