@@ -40,24 +40,25 @@ const CreateThread = () => {
          body: newThreadData,
       });
 
-      const responseData = await createThreadResponse.json();
-      console.log(responseData);
+      // const responseData = await createThreadResponse.json();
 
       if (createThreadResponse.status === 201) {
          setMessage("Thread created !");
       } else {
-         if (createThreadResponse.status === 400 && responseData.errors) {
-            // Display validation errors
-            const validationMessages = responseData.errors.map((error) => `${error.field}: ${error.message}`);
-            setMessage(`Validation Error: ${validationMessages.join(', ')}`);
-         } else {
             setMessage("Error creating Thread.");
-         }
       }
+
    }
 
    const handleContentChange = (event) => {
-      setContent(event.target.value);
+      const newContent = event.target.value;
+      setContent(newContent);
+      // Check content length and set validation message
+      if (newContent.length < 10) {
+         setMessage("Content length must be at least 10 characters long.");
+      } else {
+         setMessage(null); // Clear validation message if content length is valid
+      }
    }
 
    return(
