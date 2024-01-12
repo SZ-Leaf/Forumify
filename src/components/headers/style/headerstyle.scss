@@ -1,0 +1,20 @@
+.header{
+   display: flex;
+   justify-content: space-between;
+   .logo{
+      width: fit-content;
+   }
+   .nav-list{
+      padding-right: 10px;
+      display: inline-flex;
+      gap: 5px;
+      list-style: none;
+      li{
+         .navlink{
+            color: black;
+            text-decoration: none;
+         }
+      }
+   }
+   background-color: grey;
+}

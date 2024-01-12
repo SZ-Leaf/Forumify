@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import Header from "../../../components/user/Header"
 import { Link } from "react-router-dom";
 import { useSecurityVerify } from "../../securityCheck/security";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
+import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
 const SportsPage = () => {
 
    useSecurityVerify();
    const navigate = useNavigate();
+   const token = localStorage.getItem("jwt");
 
    const [threads, setThreads] = useState(null);
 
@@ -49,7 +50,7 @@ const SportsPage = () => {
          {(userDetails) => (
             
          <>
-            <Header />
+            <RoleHeader token={token} />
             
             <h1>Sports Threads</h1>
 

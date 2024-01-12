@@ -1,32 +1,28 @@
 import { useState } from "react";
 import { useSecurityVerify } from "../../securityCheck/security";
-import Header from "../../../components/user/Header";
+import Header from "../../../components/headers/Header";
 import { useLocation } from "react-router-dom";
-// import { jwtDecode } from "jwt-decode";
 
 const CreateThread = () => {
 
    useSecurityVerify();
    const [message, setMessage] = useState(null);
    const [content, setContent] = useState("");
-   // const navigate = useNavigate();
    const location = useLocation();
+   
+   console.log(location.state?.subjectId)
 
    const handleCreateThread = async (event) => {
       event.preventDefault();
 
       const title = event.target.title.value;
-      // const content = event.target.content.value;
-
       
       const token = localStorage.getItem("jwt");
 
       const newThread = {
-
          title: title,
          content: content,
          SubjectId: location.state?.subjectId,
-         
       }
 
       const newThreadData = JSON.stringify(newThread);
@@ -40,10 +36,10 @@ const CreateThread = () => {
          body: newThreadData,
       });
 
-      // const responseData = await createThreadResponse.json();
 
       if (createThreadResponse.status === 201) {
          setMessage("Thread created !");
+         // navigate(`/threads/details/${newThreadData.id}`)
       } else {
             setMessage("Error creating Thread.");
       }

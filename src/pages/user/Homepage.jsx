@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
 
+   // localStorage.removeItem("jwt");
    const [message, setMessage] = useState(null);
    const navigate = useNavigate();
 
@@ -29,14 +30,20 @@ const HomePage = () => {
       });
 
       const loginResponseData = await loginResponse.json();
-      const token = loginResponseData.data.token;
+      const token = loginResponseData.data;
 
       if (token) {
          localStorage.setItem("jwt", token);
          setMessage("Login Succesfull");
          navigate("/subjects");
       } else {
-         setMessage("Login Error");
+         if(!username){
+            setMessage("Please enter your username");
+         } else if(!password){
+            setMessage("Please enter your password");
+         } else {
+            setMessage("Incorrect credentials");
+         }
       }
    }
 

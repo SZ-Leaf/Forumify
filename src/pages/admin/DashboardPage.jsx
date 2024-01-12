@@ -1,5 +1,5 @@
 import { useSecurityVerify } from "../securityCheck/security";
-import AdminHeader from "../../components/admin/AdminHeader";
+import AdminHeader from "../../components/headers/AdminHeader";
 import { Link } from "react-router-dom";
 
 const DashboardPage = () => {
@@ -15,7 +15,7 @@ const DashboardPage = () => {
           <Link to="/users-panel" className="dashboardlink"><p>Users Panel</p></Link>
         </li>
         <li>
-          <Link to="/subjects" className="subjectslink"><p>Subjects</p></Link>
+          <Link to="/" className="subjectslink"><p>Reported Threads</p></Link>
         </li>
       </ul>
     </>

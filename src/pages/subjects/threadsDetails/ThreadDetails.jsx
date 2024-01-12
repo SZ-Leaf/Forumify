@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSecurityVerify } from "../../securityCheck/security"
-import Header from "../../../components/user/Header"
 import { useNavigate, useParams } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import RepliesFetcher from "../../../components/replies/repliesFetcher";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
+import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
 const ThreadDetailsPage = () => {
    useSecurityVerify();
 
    const navigate = useNavigate();
+   const token = localStorage.getItem("jwt");
 
    const { id } = useParams();
 
@@ -43,12 +44,12 @@ const ThreadDetailsPage = () => {
       navigate('/subjects');
    };
 
-   console.log(thread);
+   // console.log(thread);
 
    return (
 
       <RepliesFetcher>
-
+         
          {(replies) => (
 
          <UserDetailsFetcher>
@@ -56,8 +57,7 @@ const ThreadDetailsPage = () => {
             {(userDetails) => (
                <>
 
-                  <Header />
-
+            <RoleHeader token={token} />
                   {thread ? (
                      <>
 

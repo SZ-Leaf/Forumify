@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import Header from "../../../components/user/Header"
 import { Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useSecurityVerify } from "../../securityCheck/security";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
+import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
 const MoviesPage = () => {
 
    useSecurityVerify();
    const [threads, setThreads] = useState(null);
+   const token = localStorage.getItem("jwt");
 
    const navigate = useNavigate();
 
@@ -48,7 +49,7 @@ const MoviesPage = () => {
          {(userDetails) => (
             
          <>
-            <Header />
+            <RoleHeader token={token} />
 
             <h1>Movie Threads</h1>
 

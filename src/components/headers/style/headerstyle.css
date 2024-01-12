@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+}
+.header .logo {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.header .nav-list {
+  padding-right: 10px;
+  display: inline-flex;
+  gap: 5px;
+  list-style: none;
+}
+.header .nav-list li .navlink {
+  color: black;
+  text-decoration: none;
+}/*# sourceMappingURL=headerstyle.css.map */

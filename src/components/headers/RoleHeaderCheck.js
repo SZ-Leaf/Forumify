@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../user/Header";
+import Header from "./Header";
 import AdminHeader from "./AdminHeader";
 import { jwtDecode } from "jwt-decode";
 

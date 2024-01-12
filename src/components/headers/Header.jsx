@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import './headerstyle/headerstyle.css'
+import "./style/headerstyle.css";
 
 const Header = () => {
 
@@ -14,8 +14,13 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1>Forumify</h1>
-      <Link to="/" className="logoutlink" onClick={handleLogout}><h1>Logout</h1></Link>
+      <h1 className="logo">Forumify</h1>
+      <ul className="nav-list">
+        <li><Link to="/subjects" className="navlink">Subjects</Link></li>
+        <li><Link to="/" className="navlink" onClick={handleLogout}>Logout</Link></li>
+      </ul>
+      
+      
     </header>
   );
 

@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import Header from "../../../components/user/Header"
 import { Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useSecurityVerify } from "../../securityCheck/security";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
+import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
 const GamesPage = () => {
 
    const navigate = useNavigate();
+   const token = localStorage.getItem("jwt");
 
    useSecurityVerify();
    const [threads, setThreads] = useState(null);
@@ -50,7 +51,7 @@ const GamesPage = () => {
          {(userDetails) => (
             
          <>
-            <Header />
+            <RoleHeader token={token} />
 
                <h1>Gaming Threads</h1>
                <button onClick={() => navigate("/thread/create", { state : { subjectId: 2 } })}>
@@ -80,6 +81,7 @@ const GamesPage = () => {
                         getLoggedInUserDetails()?.roleId === 1 ? (
                           <>
                            <DeleteThread threadId={thread.id} onDelete={() => handleDeleteThread(thread.id)} />
+                           <Link to={`/thread/edit/${thread.id}`} />
                           </>
                         ) : null}
                         </>

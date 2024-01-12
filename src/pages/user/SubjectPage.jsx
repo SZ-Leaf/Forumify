@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Header from "../../components/user/Header";
-// import AdminHeader from "../../components/admin/AdminHeader";
 import './subjectpagestyle/subjectstyle.css'
 import { useSecurityVerify } from "../securityCheck/security";
-import RoleHeader from "../../components/admin/RoleHeaderCheck";
+import RoleHeader from "../../components/headers/RoleHeaderCheck";
 // import { jwtDecode } from "jwt-decode";
 
 const SubjectPage = () => {
