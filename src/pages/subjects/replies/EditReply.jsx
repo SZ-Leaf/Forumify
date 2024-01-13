@@ -1,19 +1,17 @@
 import { useState } from "react";
-import { useSecurityVerify } from "../../securityCheck/security";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 import { useParams } from "react-router-dom";
+import { useSecurityVerify } from "../../securityCheck/security";
 
-
-const EditThread = () => {
+const EditReply = () =>{
 
    useSecurityVerify();
-   const { id } = useParams();
 
-   // const [threadEdit, setThreadEdit] = useState(null);
+   const {id} = useParams();
+   
    const [message, setMessage] = useState("");
    const [content, setContent] = useState("");
 
-   
    const handleContentChange = (event) => {
       const newContent = event.target.value;
       setContent(newContent);
@@ -25,35 +23,29 @@ const EditThread = () => {
       }
    }
 
-   const handleEditThread = async (event) => {
+   const handleEditReply = async (event) => {
       event.preventDefault();
-
-      const title = event.target.title.value;
-      // const content = event.target.content.value;
-
       
       const token = localStorage.getItem("jwt");
 
-      const threadToEdit = {
+      
+      const replyToEdit = {
 
-         title: title,
          content: content,
-         // SubjectId: location.state?.subjectId,
          
       }
-
-      const threadToEditData = JSON.stringify(threadToEdit);
-
-      const threadToEditRequest = await fetch("http://localhost:3001/api/threads/" + id , {
+      const replyToEditData = JSON.stringify(replyToEdit);
+      
+      const replyToEditRequest = await fetch("http://localhost:3001/api/replies/" +id, {
          method: "PUT",
-         headers: {
+         headers:{
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
          },
-         body: threadToEditData,
+         body: replyToEditData,
       })
 
-      if (threadToEditRequest.status === 201) {
+      if (replyToEditRequest.status === 201) {
          setMessage("Thread edited !");
          // navigate(`/threads/details/${newThreadData.id}`)
       } else {
@@ -64,17 +56,9 @@ const EditThread = () => {
 
    return(
       <>
-         <RoleHeader />
+      <RoleHeader />
          {message && <p>{message}</p>}
-         <form onSubmit={handleEditThread}>
-
-            <div>
-               <label>
-                  Title
-                  <input type="text" name="title" />
-               </label>
-            </div>
-               
+         <form onSubmit={handleEditReply}>
             <div>
                <label> 
                   Content
@@ -85,7 +69,7 @@ const EditThread = () => {
          </form>
       </>
    )
+
 }
 
-
-export default EditThread;
+export default EditReply;

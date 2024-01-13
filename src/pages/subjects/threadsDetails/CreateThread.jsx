@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSecurityVerify } from "../../securityCheck/security";
-import Header from "../../../components/headers/Header";
 import { useLocation } from "react-router-dom";
+import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
 const CreateThread = () => {
 
@@ -10,13 +10,12 @@ const CreateThread = () => {
    const [content, setContent] = useState("");
    const location = useLocation();
    
-   console.log(location.state?.subjectId)
+   // console.log(location.state?.subjectId)
 
    const handleCreateThread = async (event) => {
-      event.preventDefault();
 
+      event.preventDefault();
       const title = event.target.title.value;
-      
       const token = localStorage.getItem("jwt");
 
       const newThread = {
@@ -60,7 +59,7 @@ const CreateThread = () => {
    return(
 
       <>
-      <Header />
+      <RoleHeader />
       {message && <p>{message}</p>}
       <form onSubmit={handleCreateThread}>
 

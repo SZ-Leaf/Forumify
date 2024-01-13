@@ -73,6 +73,7 @@ const SportsPage = () => {
                            getLoggedInUserDetails()?.roleId === 1 ? (
                               <>
                                  <DeleteThread threadId={thread.id} onDelete={() => handleDeleteThread(thread.id)} />
+                                 <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button>
                              </>
                            ) : null}
                            </>

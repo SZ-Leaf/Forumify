@@ -9,6 +9,7 @@ import ThreadDetailsPage from './pages/subjects/threadsDetails/ThreadDetails';
 import GamesPage from './pages/subjects/gaming/GamingPage';
 import CreateThread from './pages/subjects/threadsDetails/CreateThread';
 import EditThread from './pages/subjects/threadsDetails/EditThread';
+import EditReply from './pages/subjects/replies/EditReply';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path='/thread/details/:id' element={<ThreadDetailsPage />} />
         <Route path='/thread/create' element={<CreateThread />} />
-        <Route path='/thread/edit' element={<EditThread />} />
+        <Route path='/thread/edit/:id' element={<EditThread />} />
+        <Route path='/reply/edit/:id' element={<EditReply />} />
       </Routes>
     </BrowserRouter>
   );

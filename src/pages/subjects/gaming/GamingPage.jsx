@@ -46,7 +46,8 @@ const GamesPage = () => {
    };
 
    return(
-
+      // a component wrapper or a higher-order component (HOC), that wraps around other components or content, providing them with additional functionality or data.
+      // 
       <UserDetailsFetcher>
          {(userDetails) => (
             
@@ -70,6 +71,7 @@ const GamesPage = () => {
                      <article key={thread.id}>
 
                      <h2>{thread.title}</h2>
+                     <p>{new Date(thread.createdAt).toLocaleString()} UTC</p>
 
                      {/* here we are finding the user with the id link to userId foreign key in threads to show the author */}
                      
@@ -81,7 +83,7 @@ const GamesPage = () => {
                         getLoggedInUserDetails()?.roleId === 1 ? (
                           <>
                            <DeleteThread threadId={thread.id} onDelete={() => handleDeleteThread(thread.id)} />
-                           <Link to={`/thread/edit/${thread.id}`} />
+                           <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button>
                           </>
                         ) : null}
                         </>

@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const HomePage = () => {
 
-   // localStorage.removeItem("jwt");
    const [message, setMessage] = useState(null);
+   const token = localStorage.getItem("jwt");
    const navigate = useNavigate();
+
 
    const handleLogin = async (event) => {
 
@@ -45,7 +47,14 @@ const HomePage = () => {
             setMessage("Incorrect credentials");
          }
       }
+   
    }
+
+   useEffect(() => {
+      if (token) {
+        navigate("/subjects");
+      }
+   });
 
    return (
       <>

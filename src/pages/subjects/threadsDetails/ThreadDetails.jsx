@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSecurityVerify } from "../../securityCheck/security"
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import RepliesFetcher from "../../../components/replies/repliesFetcher";
 import { jwtDecode } from "jwt-decode";
@@ -75,6 +75,7 @@ const ThreadDetailsPage = () => {
                               
                            <>
                               <DeleteThread threadId={thread.data.id} onDelete={() => handleDeleteThread(thread.data.id)} />
+                              <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button>
                            </>
                            ) : null}
                            </>
@@ -90,7 +91,17 @@ const ThreadDetailsPage = () => {
                            <div key={filteredReply.id}>
                               {/* Render each filtered reply as needed */}
                               <p>{filteredReply.content}</p>
-                              <p>Author: {userDetails.find((user) => user.id === filteredReply.UserId)?.username || "Unknown User"}</p>
+                              <p>Author: {userDetails.find((user) => user.id === filteredReply.UserId)?.username || "Unknown."}</p>
+
+                              {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === filteredReply.UserId).id ||
+                              getLoggedInUserDetails()?.roleId === 1 ? (
+                              
+                              <>
+                              <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button>
+                              </>
+                              ) : null}
+
+                              {/* <button><Link to={`/thread/edit/${filteredReply.id}`}>Edit</Link></button> */}
                            </div>
                            ))
                         ):(
