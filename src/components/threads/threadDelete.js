@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useSecurityVerify } from "../securityCheck/security";
 
 const DeleteThread = ({ threadId, onDelete }) => {
+   useSecurityVerify();
 
    const [isDeleted, setIsDeleted] = useState(false);
 
@@ -17,6 +19,7 @@ const DeleteThread = ({ threadId, onDelete }) => {
 
       if (deleteThreadResponseData.message === 'Thread deleted successfully.') {
          setIsDeleted(true);
+         console.log(isDeleted);
    
          // Trigger the callback to inform the parent component to refresh its state
          if (onDelete) {
@@ -28,13 +31,16 @@ const DeleteThread = ({ threadId, onDelete }) => {
 
    }
 
+   const confirmDelete = () => {
+      const userConfirmed = window.confirm("Are you sure you want to delete this thread?");
+      if (userConfirmed) {
+         handleDeleteThread();
+      }
+   }
+
    return (
       <>
-         {!isDeleted ? (
-            <button onClick={handleDeleteThread}>Delete</button>
-         ) : (
-            <p>Thread Deleted</p>
-         )}
+         {!isDeleted && <button onClick={confirmDelete}>Delete</button>}
       </>
    );
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSecurityVerify } from "../../securityCheck/security";
+import { useSecurityVerify } from "../../../components/securityCheck/security";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";

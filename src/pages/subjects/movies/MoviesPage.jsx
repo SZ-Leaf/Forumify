@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
-import { useSecurityVerify } from "../../securityCheck/security";
+import { useSecurityVerify } from "../../../components/securityCheck/security";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";

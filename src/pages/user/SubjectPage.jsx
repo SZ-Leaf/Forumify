@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './subjectpagestyle/subjectstyle.css'
-import { useSecurityVerify } from "../securityCheck/security";
+import { useSecurityVerify } from "../../components/securityCheck/security";
 import RoleHeader from "../../components/headers/RoleHeaderCheck";
 // import { jwtDecode } from "jwt-decode";
 

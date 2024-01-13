@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { useSecurityVerify } from "../../securityCheck/security"
+import { useSecurityVerify } from "../../../components/securityCheck/security"
 import { useNavigate, useParams, Link } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import RepliesFetcher from "../../../components/replies/repliesFetcher";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
+import AddReply from "../../../components/replies/AddReply";
+import DeleteReply from "../../../components/replies/DeleteReply";
+import EditThread from "./EditThread";
 
 const ThreadDetailsPage = () => {
    useSecurityVerify();
@@ -45,6 +48,12 @@ const ThreadDetailsPage = () => {
    };
 
    // console.log(thread);
+   
+   
+   const handleRefresh = () => {
+      window.location.reload(); // Reload the page
+   };
+
 
    return (
 
@@ -75,7 +84,8 @@ const ThreadDetailsPage = () => {
                               
                            <>
                               <DeleteThread threadId={thread.data.id} onDelete={() => handleDeleteThread(thread.data.id)} />
-                              <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button>
+                              {/* <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button> */}
+                              <EditThread threadId={thread.data.id} />
                            </>
                            ) : null}
                            </>
@@ -83,6 +93,8 @@ const ThreadDetailsPage = () => {
                         ) : (
                            <p>Author: Unknown User</p>
                         )}
+
+                        <AddReply threadId={thread.data.id} />
 
                         {replies ? (
                            replies
@@ -98,6 +110,8 @@ const ThreadDetailsPage = () => {
                               
                               <>
                               <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button>
+                              <DeleteReply replyId={filteredReply.id} onReplyDeleted={handleRefresh}/>
+                              
                               </>
                               ) : null}
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import RoleHeader from "../../../components/headers/RoleHeaderCheck";
+import RoleHeader from "../headers/RoleHeaderCheck";
 import { useParams } from "react-router-dom";
-import { useSecurityVerify } from "../../securityCheck/security";
+import { useSecurityVerify } from "../securityCheck/security";
 
 const EditReply = () =>{
 

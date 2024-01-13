@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSecurityVerify } from "../../securityCheck/security";
+import { useSecurityVerify } from "../../../components/securityCheck/security";
 import { useLocation } from "react-router-dom";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
@@ -9,8 +9,6 @@ const CreateThread = () => {
    const [message, setMessage] = useState(null);
    const [content, setContent] = useState("");
    const location = useLocation();
-   
-   // console.log(location.state?.subjectId)
 
    const handleCreateThread = async (event) => {
 
@@ -35,12 +33,13 @@ const CreateThread = () => {
          body: newThreadData,
       });
 
+      console.log(createThreadResponse)
+
 
       if (createThreadResponse.status === 201) {
          setMessage("Thread created !");
-         // navigate(`/threads/details/${newThreadData.id}`)
       } else {
-            setMessage("Error creating Thread.");
+         setMessage("Error creating Thread.");
       }
 
    }
