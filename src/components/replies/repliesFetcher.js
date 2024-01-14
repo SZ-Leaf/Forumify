@@ -19,7 +19,7 @@ const RepliesFetcher = ({ threadId, children }) => {
       };
 
       fetchReplyDetails();
-   }, [threadId]);
+   }, []);
 
   return children(replies);
 };

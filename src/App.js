@@ -9,9 +9,8 @@ import ThreadDetailsPage from './pages/subjects/threadsDetails/ThreadDetails';
 import GamesPage from './pages/subjects/gaming/GamingPage';
 import CreateThread from './pages/subjects/threadsDetails/CreateThread';
 import EditThread from './pages/subjects/threadsDetails/EditThread';
-import EditReply from './components/replies/EditReply';
 import UsersPanel from './pages/admin/UsersPanel';
-import AddReply from './components/replies/AddReply';
+import ProfilePage from './pages/user/Profile';
 
 function App() {
   return (
@@ -26,9 +25,8 @@ function App() {
         <Route path='/thread/details/:id' element={<ThreadDetailsPage />} />
         <Route path='/thread/create' element={<CreateThread />} />
         <Route path='/thread/edit/:id' element={<EditThread />} />
-        <Route path='/reply/edit/:id' element={<EditReply />} />
         <Route path='/admin/users-panel' element={<UsersPanel />} />
-        <Route path='/replies/add' element={<AddReply />} />
+        <Route path='/users/profile' element={<ProfilePage/>} />
       </Routes>
     </BrowserRouter>
   );

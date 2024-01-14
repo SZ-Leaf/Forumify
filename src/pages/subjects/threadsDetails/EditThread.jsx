@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useSecurityVerify } from "../../../components/securityCheck/security";
-import RoleHeader from "../../../components/headers/RoleHeaderCheck";
-// import { useParams } from "react-router-dom";
 
 
 const EditThread = ({threadId}) => {
@@ -29,7 +27,7 @@ const EditThread = ({threadId}) => {
 
       const threadToEditData = JSON.stringify(threadToEdit);
 
-      if (content.length < 3) {
+      if (content.length < 10) {
          setMessage("Content length must be at least 3 characters long.");
          return; // Do not proceed with the API call
       }
@@ -42,13 +40,6 @@ const EditThread = ({threadId}) => {
          },
          body: threadToEditData,
       })
-
-      // Check content length and set validation message
-      if (content.length < 10) {
-         setMessage("Content length must be at least 10 characters long.");
-      } else {
-         setMessage(null); // Clear validation message if content length is valid
-      }
 
       if (threadToEditRequest.status === 201) {
          setMessage("Thread updated successfully.");
@@ -64,8 +55,8 @@ const EditThread = ({threadId}) => {
       const newContent = event.target.value;
       setContent(newContent);
       // Check content length and set validation message
-      if (newContent.length < 3) {
-         setMessage("Content length must be at least 3 characters long.");
+      if (newContent.length < 10) {
+         setMessage("Content length must be at least 10 characters long.");
       } else {
          setMessage(null); // Clear validation message if content length is valid
       }

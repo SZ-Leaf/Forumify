@@ -36,7 +36,7 @@ const AddReply = ({threadId}) => {
          setMessage("Thread created !");
          setTimeout(() => {
             event.target.submit();
-         }, 2000);
+         }, 1000);
       } else {
          setMessage("Error creating Thread.");
       }

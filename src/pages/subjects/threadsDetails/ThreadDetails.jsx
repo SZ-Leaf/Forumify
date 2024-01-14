@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSecurityVerify } from "../../../components/securityCheck/security"
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import UserDetailsFetcher from "../../../components/user/userDetails";
 import RepliesFetcher from "../../../components/replies/repliesFetcher";
 import { jwtDecode } from "jwt-decode";
@@ -9,6 +9,7 @@ import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 import AddReply from "../../../components/replies/AddReply";
 import DeleteReply from "../../../components/replies/DeleteReply";
 import EditThread from "./EditThread";
+import EditReply from "../../../components/replies/EditReply";
 
 const ThreadDetailsPage = () => {
    useSecurityVerify();
@@ -66,7 +67,7 @@ const ThreadDetailsPage = () => {
             {(userDetails) => (
                <>
 
-            <RoleHeader token={token} />
+               <RoleHeader token={token} />
                   {thread ? (
                      <>
 
@@ -109,13 +110,12 @@ const ThreadDetailsPage = () => {
                               getLoggedInUserDetails()?.roleId === 1 ? (
                               
                               <>
-                              <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button>
-                              <DeleteReply replyId={filteredReply.id} onReplyDeleted={handleRefresh}/>
+                              {/* <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button> */}
+                              <EditReply replyId={filteredReply.id} />
+                              <DeleteReply replyId={filteredReply.id} onReplyDeletedt={handleRefresh}/>
                               
                               </>
                               ) : null}
-
-                              {/* <button><Link to={`/thread/edit/${filteredReply.id}`}>Edit</Link></button> */}
                            </div>
                            ))
                         ):(

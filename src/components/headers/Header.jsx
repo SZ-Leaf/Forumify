@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./style/headerstyle.css";
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
+
+  const token = localStorage.getItem("jwt");
+  const decodedToken = jwtDecode(token)
+
+  const username = decodedToken.data;
 
   const handleLogout = () => {
     // Remove the JWT token from local storage
@@ -16,6 +22,7 @@ const Header = () => {
     <header className="header">
       <h1 className="logo">Forumify</h1>
       <ul className="nav-list">
+        <li><Link to="/users/profile" className="navlink">{username}</Link></li>
         <li><Link to="/subjects" className="navlink">Subjects</Link></li>
         <li><Link to="/" className="navlink" onClick={handleLogout}>Logout</Link></li>
       </ul>

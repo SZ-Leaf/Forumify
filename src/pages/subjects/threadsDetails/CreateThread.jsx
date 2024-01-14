@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSecurityVerify } from "../../../components/securityCheck/security";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 
 const CreateThread = () => {
 
    useSecurityVerify();
+   const navigate = useNavigate();
    const [message, setMessage] = useState(null);
    const [content, setContent] = useState("");
    const location = useLocation();
 
-   const handleCreateThread = async (event) => {
+   console.log(location.state);
 
+   useEffect(() => {
+      // Check if subjectId is present in location.state
+      if (!location.state || !location.state.subjectId) {
+         // Redirect to '/subjects' if subjectId is null or undefined
+         navigate("/subjects");
+      }
+   })
+
+   const handleCreateThread = async (event) => {
+      
       event.preventDefault();
       const title = event.target.title.value;
       const token = localStorage.getItem("jwt");
@@ -19,9 +30,10 @@ const CreateThread = () => {
       const newThread = {
          title: title,
          content: content,
-         SubjectId: location.state?.subjectId,
+         SubjectId: location.state.subjectId,
       }
 
+      console.log(newThread.SubjectId);
       const newThreadData = JSON.stringify(newThread);
 
       const createThreadResponse = await fetch("http://localhost:3001/api/threads/", {

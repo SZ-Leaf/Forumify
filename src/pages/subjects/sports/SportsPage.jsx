@@ -72,8 +72,7 @@ const SportsPage = () => {
                            {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === thread.UserId).id ||
                            getLoggedInUserDetails()?.roleId === 1 ? (
                               <>
-                                 <DeleteThread threadId={thread.id} onDelete={() => handleDeleteThread(thread.id)} />
-                                 <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button>
+                                    <DeleteThread threadId={thread.id} onDelete={() => handleDeleteThread(thread.id)} />
                              </>
                            ) : null}
                            </>
@@ -85,7 +84,7 @@ const SportsPage = () => {
                   ))}
                </>
             ) : (
-               <p>Loading</p>
+               <p>Loading Thread</p>
             )}
          </>
 
