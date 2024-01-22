@@ -4,6 +4,9 @@ import './subjectpagestyle/subjectstyle.css'
 import { useSecurityVerify } from "../../components/securityCheck/security";
 import RoleHeader from "../../components/headers/RoleHeaderCheck";
 // import { jwtDecode } from "jwt-decode";
+import PVE from '../../Assets/pve.png'
+import PVP from '../../Assets/pvp.png'
+import Raid from '../../Assets/raid.png'
 
 const SubjectPage = () => {
 
@@ -27,27 +30,32 @@ const SubjectPage = () => {
    return(
       <div className="body">
 
-      <RoleHeader token={token} />
+      <RoleHeader className="header" token={token} />
          
          <section className="subjectbody">
 
             <div className="main-subject-div">
+
                <div className="title">Subjects</div>
 
-               <Link to="/sports" className="subject-div">
-                  <div><h3>Sports</h3></div>
-                  <div id="subjectdiv"></div>
-               </Link>
+               <div className="linksDiv">
 
-               <Link to="/gaming" className="subject-div">
-                  <div><h3>Gaming</h3></div>
-                  <div id="subjectdiv"></div>
-               </Link>
+                  <Link to="/pve" className="subject-div">
+                     <div className="subjectTitle">PvE</div>
+                     <div className="subjectImg"><img src={PVE} alt="PvP Image" /></div>
+                  </Link>
 
-               <Link to="/movies" className="subject-div">
-                  <div><h3>Movies</h3></div>
-                  <div id="subjectdiv"></div>
-               </Link>
+                  <Link to="/pvp" className="subject-div">
+                     <div className="subjectTitle">PvP</div>
+                     <div className="subjectImg"><img src={PVP} alt="PvP Image" /></div>
+                  </Link>
+
+                  <Link to="/raid" className="subject-div">
+                     <div className="subjectTitle">Raid</div>
+                     <div className="subjectImg"><img src={Raid} alt="PvP Image" /></div>
+                  </Link>
+
+               </div>
 
             </div>
 

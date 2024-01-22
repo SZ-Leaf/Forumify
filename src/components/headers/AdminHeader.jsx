@@ -20,19 +20,34 @@ const AdminHeader = () => {
 
    return (
       <header className="header">
-         <h1 className="logo">Forumify</h1>
-         {/* <Link to="/dashboard" className="dashboard-link"><h1>Dashboard</h1></Link><Link to="/" className="subjectslink"><h2>Subjects</h2></Link>
-         <Link to="/dashboard" className="dashboard-link"><h2>Dashboard</h2></Link>
-         <Link to="/" className="logoutlink" onClick={handleLogout}><h1>Logout</h1></Link> */}
-         <ul className="nav-list">
-            <li><Link to="/users/profile" className="navlink">{username}</Link></li>
-            <li><Link to="/subjects" className="navlink">Subjects</Link></li>
-            <li><Link to="/dashboard" className="navlink">Dashboard</Link></li>
-            <li><Link to="/" className="navlink" onClick={handleLogout}>Logout</Link></li>
-         </ul>
+         <Link to="/subjects" className="logolink"><h1 className="logo">Forumify</h1></Link>
+         <nav>
+            <ul className="nav-list">
+
+            <li>
+            <Link to="/users/profile" className="navlink">{username}</Link>
+            <span></span><span></span><span></span><span></span>
+            </li>
+
+            <li>
+            <Link to="/subjects" className="navlink">Subjects</Link>
+               <span></span><span></span><span></span><span></span>
+            </li>
+
+            <li id="dashboard">
+            <Link to="/dashboard" className="navlink">Dashboard</Link>
+               <span></span><span></span><span></span><span></span>
+            </li>
+
+            <li className="logout">
+            <Link to="/" className="navlink" onClick={handleLogout}>Logout</Link>
+               <span></span><span></span><span></span><span></span>
+            </li>
+            
+            </ul>
+         </nav>
       </header>
    );
-
 };
 
 export default AdminHeader;

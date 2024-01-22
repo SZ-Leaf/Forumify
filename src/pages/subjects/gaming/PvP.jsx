@@ -54,16 +54,16 @@ const GamesPage = () => {
          <>
             <RoleHeader token={token} />
 
-               <h1>Gaming Threads</h1>
+               <h1>PvP Threads</h1>
                <button onClick={() => navigate("/thread/create", { state : { subjectId: 2 } })}>
                   Create New Thread
                </button>
 
 
             {threads ? (
-               <>
+               <div>
                {threads
-                  // we only want the threads with subjectId = 2 which corresponds to gaming subject
+                  // we only want the threads with subjectId = 2 which corresponds to pvp subject
                   .filter((thread) => thread.SubjectId === 2)
                   .map((thread) => (
                      
@@ -71,9 +71,9 @@ const GamesPage = () => {
                      <article key={thread.id}>
 
                      <h2>{thread.title}</h2>
-                     <p>{new Date(thread.createdAt).toLocaleString()} UTC</p>
+                     <p>Created at: {new Date(thread.createdAt).toLocaleString()} UTC</p>
 
-                     {/* here we are finding the user with the id link to userId foreign key in threads to show the author */}
+                     {/* finding the user with the id link to userId foreign key in threads to show the author */}
                      
                      {userDetails && userDetails.find((user) => user.id === thread.UserId) ? (
                         <>
@@ -87,15 +87,15 @@ const GamesPage = () => {
                         ) : null}
                         </>
                      ) : ( 
-                        <p>Author: Unknown User</p>
-                     )}
+                        <p>Author: Unknown</p>
+                     )} 
                      <Link to={`/thread/details/${thread.id}`}>Open thread</Link>
                      </article>
                   ))}
-               </>
+               </div>
             ) : (
                // if threads not loaded yet, show charging on the screen in the meanwhile
-               <p>Loading</p>
+               <p>Loading threads</p>
             )}
          </>
 

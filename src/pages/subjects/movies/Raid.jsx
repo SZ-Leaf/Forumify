@@ -51,19 +51,20 @@ const MoviesPage = () => {
          <>
             <RoleHeader token={token} />
 
-            <h1>Movie Threads</h1>
+            <h1>Raid Threads</h1>
 
             <button onClick={() => navigate("/thread/create", { state : { subjectId: 3 } })}>
                Create New Thread
             </button>
 
             {threads ? (
-               <>
+               <div>
                {threads
                   .filter((thread) => thread.SubjectId === 3)
                   .map((thread) => (
                      <article key={thread.id}>
                         <h2>{thread.title}</h2>
+                        <p>Created at: {new Date(thread.createdAt).toLocaleString()} UTC</p>
                         {userDetails && userDetails.find((user) => user.id === thread.UserId) ? (
                            <>
                            <p>Author: {userDetails.find((user) => user.id === thread.UserId).username}</p>
@@ -81,7 +82,7 @@ const MoviesPage = () => {
                         <Link to={`/thread/details/${thread.id}`}>Open thread</Link>
                      </article>
                   ))}
-               </>
+               </div>
             ) : (
                <p>Loading</p>
             )}

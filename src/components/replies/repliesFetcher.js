@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // { children } is used to handle and use the result because our result is a json array, it will contain the userDetails const we created in which we will store the json array returned.
-const RepliesFetcher = ({ threadId, children }) => {
+const RepliesFetcher = ({ children }) => {
   const [replies, setReply] = useState(null);
 
    useEffect(() => {

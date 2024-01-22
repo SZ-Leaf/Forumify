@@ -11,7 +11,7 @@ const CreateThread = () => {
    const [content, setContent] = useState("");
    const location = useLocation();
 
-   console.log(location.state);
+   // console.log(location.state);
 
    useEffect(() => {
       // Check if subjectId is present in location.state
@@ -50,6 +50,8 @@ const CreateThread = () => {
 
       if (createThreadResponse.status === 201) {
          setMessage("Thread created !");
+         navigate(-1);
+         
       } else {
          setMessage("Error creating Thread.");
       }
@@ -63,7 +65,7 @@ const CreateThread = () => {
       if (newContent.length < 10) {
          setMessage("Content length must be at least 10 characters long.");
       } else {
-         setMessage(null); // Clear validation message if content length is valid
+         setMessage("Ready to Create"); // Clear validation message if content length is valid
       }
    }
 

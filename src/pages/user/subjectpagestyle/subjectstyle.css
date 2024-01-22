@@ -1,27 +1,69 @@
 .body {
   width: 100%;
   height: 100vh;
-}
-.body .subjectbody {
-  background-color: #9DB2BF;
-  height: 100%;
-}
-.body .subjectbody .main-subject-div {
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 90%;
+}
+.body .header {
+  width: 100%;
+  height: 10%;
+}
+.body .subjectbody {
+  width: 100%;
+  background-color: #9DB2BF;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.body .subjectbody .main-subject-div {
+  border-radius: 15px;
+  box-shadow: rgb(38, 57, 77) 0px 10px 50px 20px;
+  display: flex;
+  gap: 20px;
+  padding: 10px 0 10px 0;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 95%;
+  height: 90%;
   background-color: #27374D;
 }
 .body .subjectbody .main-subject-div .title {
   width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   text-align: center;
-  font-size: 28px;
+  font-size: 56px;
   font-weight: 500;
+  color: white;
 }
-.body .subjectbody .main-subject-div .subject-div {
+.body .subjectbody .main-subject-div .linksDiv {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.body .subjectbody .main-subject-div .linksDiv .subject-div {
   width: 30%;
-  height: 400px;
+  height: 100%;
   text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+}
+.body .subjectbody .main-subject-div .linksDiv .subject-div .subjectTitle {
+  height: 10%;
+  font-weight: bold;
+  font-size: large;
+  color: black;
+  background-color: #9DB2BF;
+  text-align: center;
+}
+.body .subjectbody .main-subject-div .linksDiv .subject-div .subjectImg {
+  height: 90%;
+  width: 100%;
+}
+.body .subjectbody .main-subject-div .linksDiv .subject-div .subjectImg img {
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=subjectstyle.css.map */

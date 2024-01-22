@@ -52,19 +52,20 @@ const SportsPage = () => {
          <>
             <RoleHeader token={token} />
             
-            <h1>Sports Threads</h1>
+            <h1>PvE Threads</h1>
 
             <button onClick={() => navigate("/thread/create", { state : { subjectId: 1 } })}>
                Create New Thread
             </button>
 
             {threads ? (
-               <>
+               <div>
                {threads
                   .filter((thread) => thread.SubjectId === 1)
                   .map((thread) => (
                      <article key={thread.id}>
                         <h2>{thread.title}</h2>
+                        <p>Created at: {new Date(thread.createdAt).toLocaleString()} UTC</p>
                         {userDetails && userDetails.find((user) => user.id === thread.UserId) ? (
                            <>
                            <p>Author: {userDetails.find((user) => user.id === thread.UserId).username}</p>
@@ -82,7 +83,7 @@ const SportsPage = () => {
                         <Link to={`/thread/details/${thread.id}`}>Open thread</Link>
                      </article>
                   ))}
-               </>
+               </div>
             ) : (
                <p>Loading Thread</p>
             )}

@@ -33,12 +33,12 @@ const AddReply = ({threadId}) => {
       });
 
       if (addReplyResponse.status === 201) {
-         setMessage("Thread created !");
+         setMessage("Reply added !");
          setTimeout(() => {
             event.target.submit();
-         }, 1000);
+         }, 500);
       } else {
-         setMessage("Error creating Thread.");
+         setMessage("Error adding Reply.");
       }
    }
 

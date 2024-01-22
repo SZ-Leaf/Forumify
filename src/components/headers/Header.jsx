@@ -5,6 +5,11 @@ import { jwtDecode } from "jwt-decode";
 const Header = () => {
 
   const token = localStorage.getItem("jwt");
+  // console.log(token);
+
+  if(!token || !jwtDecode(token)){
+    return
+  }
   const decodedToken = jwtDecode(token)
 
   const username = decodedToken.data;
@@ -20,14 +25,42 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="logo">Forumify</h1>
-      <ul className="nav-list">
-        <li><Link to="/users/profile" className="navlink">{username}</Link></li>
-        <li><Link to="/subjects" className="navlink">Subjects</Link></li>
-        <li><Link to="/" className="navlink" onClick={handleLogout}>Logout</Link></li>
-      </ul>
-      
-      
+      <Link to="/subjects" className="logolink"><h1 className="logo">Forumify</h1></Link>
+      {/* <ul className="nav-list">
+
+        <li id="profile">
+          <Link to="/users/profile" className="navlink">{username}</Link><span></span><span></span><span></span><span></span>
+        </li>
+
+        <li id="subjects">
+          <Link to="/subjects" className="navlink">Subjects</Link><span></span><span></span><span></span><span></span>
+        </li>
+
+        <li id="logout">
+          <Link to="/" className="navlink" onClick={handleLogout}>Logout</Link><span></span><span></span><span></span><span></span>
+        </li>
+
+      </ul> */}
+      <nav>
+        <ul>
+
+          <li>
+          <Link to="/users/profile" className="navlink">{username}</Link>
+          <span></span><span></span><span></span><span></span>
+          </li>
+
+          <li>
+          <Link to="/subjects" className="navlink">Subjects</Link>
+            <span></span><span></span><span></span><span></span>
+          </li>
+
+          <li>
+          <Link to="/" className="navlink" id="logout" onClick={handleLogout}>Logout</Link>
+            <span></span><span></span><span></span><span></span>
+          </li>
+
+        </ul>
+      </nav>
     </header>
   );
 
