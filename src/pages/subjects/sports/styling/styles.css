@@ -1,1 +1,10 @@
-/*# sourceMappingURL=styles.css.map */
+.body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+.body .header {
+  width: 100%;
+  height: 10%;
+}/*# sourceMappingURL=styles.css.map */

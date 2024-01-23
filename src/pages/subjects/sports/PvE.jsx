@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
+import "./styling/styles.css"
 
 const SportsPage = () => {
 
@@ -49,7 +50,7 @@ const SportsPage = () => {
       <UserDetailsFetcher>
          {(userDetails) => (
             
-         <>
+         <div>
             <RoleHeader token={token} />
             
             <h1>PvE Threads</h1>
@@ -87,7 +88,7 @@ const SportsPage = () => {
             ) : (
                <p>Loading Thread</p>
             )}
-         </>
+         </div>
 
          )}
 

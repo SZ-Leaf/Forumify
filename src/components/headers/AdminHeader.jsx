@@ -40,7 +40,7 @@ const AdminHeader = () => {
             </li>
 
             <li className="logout">
-            <Link to="/" className="navlink" onClick={handleLogout}>Logout</Link>
+            <Link to="/" className="navlink" id="logout" onClick={handleLogout}>Logout</Link>
                <span></span><span></span><span></span><span></span>
             </li>
             

@@ -9,6 +9,7 @@
 }
 
 .header {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   display: flex;
   justify-content: space-between;
   background: linear-gradient(to right, hsl(206, 23%, 28%) 0%, hsl(206, 23%, 40%) 7.6%, hsl(206, 23%, 38%) 14.8%, hsl(206, 23%, 36%) 21.7%, hsl(206, 23%, 34%) 28.4%, hsl(206, 23%, 32%) 34.8%, hsl(206, 23%, 30%) 41.1%, hsl(206, 23%, 28%) 47.3%, hsl(206, 23%, 30%) 53.4%, hsl(206, 23%, 32%) 59.6%, hsl(206, 23%, 34%) 65.9%, hsl(206, 23%, 36%) 72.2%, hsl(206, 23%, 38%) 78.8%, hsl(206, 23%, 40%) 85.5%, hsl(206, 23%, 42%) 92.6%, hsl(206, 23%, 28%) 100%);
@@ -29,7 +30,7 @@
 }
 
 nav {
-  height: 100%;
+  min-height: 100%;
   width: 35%;
 }
 
@@ -85,13 +86,17 @@ nav ul li span {
   transform: translateY(150%);
   border-radius: 50%;
   left: calc((var(--n) - 1.5) * 25%);
-  transition: 1s;
+  transition: 0.8s;
   transition-delay: calc((var(--n) - 1) * 0.1s);
   z-index: -1;
 }
 
 nav ul li a:hover {
   color: #FFFFFF;
+}
+
+#logout:hover {
+  color: red;
 }
 
 nav ul li:hover span {
