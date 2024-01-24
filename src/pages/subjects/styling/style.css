@@ -1,0 +1,156 @@
+* {
+  overflow: hidden;
+}
+
+.header {
+  width: 100%;
+  height: 10%;
+}
+
+#root {
+  height: 100%;
+}
+
+.root1 {
+  height: 100%;
+}
+
+.main {
+  min-height: 90%;
+  background: rgb(39, 55, 77);
+  background: linear-gradient(180deg, rgb(39, 55, 77) 0%, rgb(46, 65, 91) 50%, rgb(39, 55, 77) 100%);
+  overflow-x: scroll;
+}
+.main .titleDiv {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.main .titleDiv h1 {
+  color: white;
+  font-weight: 700;
+  font-size: 42px;
+}
+.main .titleDiv button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #4CA676;
+  height: 35px;
+  width: 13em;
+  font-weight: 600;
+  font-size: 17px;
+  position: relative;
+  overflow: hidden;
+}
+.main .titleDiv button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.main .titleDiv button:hover span {
+  transform: translateX(100%);
+}
+.main .titleDiv button span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(62, 133, 86);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+.main .threadsDiv {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.main .threadsDiv .article {
+  width: 85%;
+  height: 100px;
+  display: flex;
+  background-color: #D9D9D9;
+  justify-content: space-between;
+  border-radius: 1vw;
+  box-shadow: rgba(97, 91, 91, 0.87) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(125, 114, 114, 0.476) 0px 0px 0px 1px inset;
+}
+.main .threadsDiv .article .threadPart1 {
+  overflow: hidden;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3px 0 3px;
+}
+.main .threadsDiv .article .threadPart1 h2 {
+  width: 100%;
+  height: 50%;
+  line-height: 50px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+.main .threadsDiv .article .threadPart1 div {
+  width: 100%;
+  height: 50%;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  border-right: 1px solid black;
+}
+.main .threadsDiv .article .threadPart1 div :first-child {
+  width: 100%;
+}
+.main .threadsDiv .article .threadPart1 div :nth-child(2) {
+  width: 60%;
+}
+.main .threadsDiv .article .threadPart1 div :nth-child(3) {
+  width: 40%;
+  text-align: center;
+}
+.main .threadsDiv .article .threadPart2 {
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.main .threadsDiv .article .threadPart2 button {
+  position: relative;
+  background-color: #9e081e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  height: 35%;
+  border-radius: 10px;
+  padding: 5px;
+  font-weight: bold;
+}
+.main .threadsDiv .article .threadPart2 button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+.main .threadsDiv .article .threadPart2 a {
+  box-sizing: border-box;
+  height: 35%;
+  padding: 5px;
+  text-decoration: none;
+  border: 2px solid black;
+  color: white;
+  background-color: #9DB2BF;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.main .threadsDiv .article .threadPart2 a:hover {
+  background-color: #4CA676;
+}/*# sourceMappingURL=style.css.map */

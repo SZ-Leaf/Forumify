@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSecurityVerify } from "../../../components/securityCheck/security"
 import { useNavigate, useParams } from "react-router-dom";
-import UserDetailsFetcher from "../../../components/user/userDetails";
-import RepliesFetcher from "../../../components/replies/repliesFetcher";
 import { jwtDecode } from "jwt-decode";
 import DeleteThread from "../../../components/threads/threadDelete";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
@@ -10,6 +8,7 @@ import AddReply from "../../../components/replies/AddReply";
 import DeleteReply from "../../../components/replies/DeleteReply";
 import EditThread from "./EditThread";
 import EditReply from "../../../components/replies/EditReply";
+import './styles/detailsStyles.css'
 
 const ThreadDetailsPage = () => {
    useSecurityVerify();
@@ -20,6 +19,7 @@ const ThreadDetailsPage = () => {
    const { id } = useParams();
 
    const [thread, setThread] = useState(null);
+   const [users, setUsers] = useState(null);
 
    useEffect(() =>{
       (async () =>{
@@ -27,9 +27,22 @@ const ThreadDetailsPage = () => {
          const threadResponseData = await threadResponse.json();
 
          setThread(threadResponseData);
+         // console.log(threadResponseData);
+         
          }
       )();
       // eslint-disable-next-line react-hooks/exhaustive-deps
+   },[]);
+
+   useEffect(() =>{
+      (async () =>{
+         const usersResponse = await fetch("http://localhost:3001/api/users/");
+         const usersResponseData = await usersResponse.json();
+
+         setUsers(usersResponseData);
+         
+         }
+      )();
    },[]);
 
    const getLoggedInUserDetails = () => {
@@ -48,7 +61,8 @@ const ThreadDetailsPage = () => {
       navigate('/subjects');
    };
 
-   // console.log(thread);
+   // // console.log(thread);
+   // console.log(thread?.data?.Replies);
    
    
    const handleRefresh = () => {
@@ -57,83 +71,69 @@ const ThreadDetailsPage = () => {
 
 
    return (
-
-      <RepliesFetcher>
-         
-         {(replies) => (
-
-         <UserDetailsFetcher>
-
-            {(userDetails) => (
-               <>
+         <div className="root1">
 
                <RoleHeader token={token} />
+
                   {thread ? (
-                     <>
-
-                        <h2>{thread.data.title}</h2>
-                        <p>{thread.data.content}</p>
-
-                        {userDetails && userDetails.find((user) => user.id === thread.data.UserId) ? (
-
-                           <>
-                           <p>Author: {userDetails.find((user) => user.id === thread.data.UserId).username}</p>
-
-
-                           {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === thread.data.UserId).id ||
-                           getLoggedInUserDetails()?.roleId === 1 ? (
+                     <div key={thread.id} className="threadDetails-main">
+                        <div className="main-threadDiv">
+                           <div className="thread-div">
+                              <h2>{thread.data.title}</h2>
+                              <p className="threadContent">{thread.data.content}</p>
+                              <div className="credentials">
+                                 <div>
+                                 <p>Created at: {new Date(thread.data.createdAt).toLocaleString()} UTC</p>
+                                 <p>Author: {thread.data.User?.username}</p>
+                                 </div>
+                                 <div className="edit-delete-div">
+                                 {getLoggedInUserDetails()?.userId === thread.data.UserId ||
+                                 getLoggedInUserDetails()?.roleId === 1 ? (
+                                    <>
+                                    <DeleteThread threadId={thread.data.id} onDelete={() => handleDeleteThread(thread.data.id)} />
+                                    <EditThread threadId={thread.data.id} />
+                                    </>
+                                 ) : null}
+                                 </div>
+                              </div>
                               
-                           <>
-                              <DeleteThread threadId={thread.data.id} onDelete={() => handleDeleteThread(thread.data.id)} />
-                              {/* <button><Link to={`/thread/edit/${thread.id}`}>Edit</Link></button> */}
-                              <EditThread threadId={thread.data.id} />
-                           </>
-                           ) : null}
-                           </>
-                           
-                        ) : (
-                           <p>Author: Unknown User</p>
-                        )}
-
-                        <AddReply threadId={thread.data.id} />
-
-                        {replies ? (
-                           replies
-                           .filter((reply) => reply.ThreadId === thread.data.id)
-                           .map((filteredReply) => (
-                           <div key={filteredReply.id}>
-                              {/* Render each filtered reply as needed */}
-                              <p>{filteredReply.content}</p>
-                              <p>Author: {userDetails.find((user) => user.id === filteredReply.UserId)?.username || "Unknown."}</p>
-
-                              {getLoggedInUserDetails()?.userId === userDetails.find((user) => user.id === filteredReply.UserId).id ||
-                              getLoggedInUserDetails()?.roleId === 1 ? (
-                              
-                              <>
-                              {/* <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button> */}
-                              <EditReply replyId={filteredReply.id} />
-                              <DeleteReply replyId={filteredReply.id} onReplyDeletedt={handleRefresh}/>
-                              
-                              </>
-                              ) : null}
                            </div>
-                           ))
-                        ):(
-                           <p>Loading Replies.</p>
-                        )}
+                           <AddReply threadId={thread.data.id} />
+                        </div>
+                        
+                        <div className="replies">
+                        
+                        {thread.data.Replies && thread.data.Replies.length > 0 ? (
+                           thread.data.Replies.map((reply) => (
 
-                     </>
+                              <div key={reply.id} className="reply-div">
+                                 <p>{reply.content}</p>
+                                 <p>Author: {users && users.find((user) => user.id === reply.UserId)?.username}</p>
+                                 <p>Created at: {new Date(reply.createdAt).toLocaleString()} UTC</p>
+                                 {getLoggedInUserDetails()?.userId === reply.UserId ||
+                                 getLoggedInUserDetails()?.roleId === 1 ? (
+                                 
+                                 <>
+                                 {/* <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button> */}
+                                 <EditReply replyId={reply.id} />
+                                 <DeleteReply replyId={reply.id} onReplyDeletedt={handleRefresh}/>
+                                 
+                                 </>
+                                 ) : null}
+                              </div>
+                           ))
+                        ) : (
+                           <p>No replies yet.</p>
+                        )}
+                        
+                        </div>
+
+                     </div>
                   ):(
                      <p>Loading Thread</p>
                   )}
 
-               </>
-            )}
-
-         </UserDetailsFetcher>
-      )}
-
-      </RepliesFetcher>
+         </div>
    )
 }
 

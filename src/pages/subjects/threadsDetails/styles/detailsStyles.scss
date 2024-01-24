@@ -1,0 +1,61 @@
+.threadDetails-main{
+   min-height: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   background-color: rgb(39,55,77);
+   justify-content: space-evenly;
+   overflow: hidden;
+
+   .main-threadDiv{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      height: fit-content;
+      padding-top: 20px;
+      .thread-div{
+         width: 90%;
+         height: fit-content;
+         background-color: #D9D9D9;
+         border-radius: 15px;
+         display: flex;
+         flex-wrap: wrap;
+         h2{
+            width: 100%;
+            border-bottom: 1px solid black;
+            padding: 5px;
+         }
+         .threadContent{
+            width: 100%;
+            border-bottom: 1px solid black;
+            padding: 5px;
+         }
+         .credentials{
+            width: 100%;
+            display: flex;
+            padding: 5px;
+            div{
+               width: 50%;
+            }
+         }
+      }
+      button{
+         width: 20%;
+         height: fit-content;
+      }
+      form{
+         width: 90%;
+         div{
+            display: flex;
+            justify-content: center;
+            label{
+               width: 100%;
+               display: flex;
+               flex-direction: column;
+               text-align: center;
+            }
+         }
+      }
+   }
+   
+}
