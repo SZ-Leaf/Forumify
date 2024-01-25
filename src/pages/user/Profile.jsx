@@ -27,11 +27,11 @@ const ProfilePage = () => {
 
          setUser(useResponseData);
       })();
-   }, []);
+   }, [tokenDecode.UserId]);
 
    // console.log(tokenDecode.UserId)
-   console.log(user?.data?.Threads);
-   console.log(user?.data?.id)
+   // console.log(user?.data?.Threads);
+   // console.log(user?.data?.id)
 
    const handleRefresh = () => {
       window.location.reload(); // Reload the page

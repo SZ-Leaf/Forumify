@@ -42,17 +42,17 @@ const SubjectPage = () => {
 
                   <Link to="/pve" className="subject-div">
                      <div className="subjectTitle">PvE</div>
-                     <div className="subjectImg"><img src={PVE} alt="PvP Image" /></div>
+                     <div className="subjectImg"><img src={PVE} alt="PvE" /></div>
                   </Link>
 
                   <Link to="/pvp" className="subject-div">
                      <div className="subjectTitle">PvP</div>
-                     <div className="subjectImg"><img src={PVP} alt="PvP Image" /></div>
+                     <div className="subjectImg"><img src={PVP} alt="PvP" /></div>
                   </Link>
 
                   <Link to="/raid" className="subject-div">
                      <div className="subjectTitle">Raid</div>
-                     <div className="subjectImg"><img src={Raid} alt="PvP Image" /></div>
+                     <div className="subjectImg"><img src={Raid} alt="Raid" /></div>
                   </Link>
 
                </div>

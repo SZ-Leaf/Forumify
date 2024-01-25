@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSecurityVerify } from "../../../components/securityCheck/security";
 import { useLocation, useNavigate } from "react-router-dom";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
+import './styles/createThread/createStyle.css'
 
 const CreateThread = () => {
 
@@ -10,6 +11,7 @@ const CreateThread = () => {
    const [message, setMessage] = useState(null);
    const [content, setContent] = useState("");
    const location = useLocation();
+   const token = localStorage.getItem("jwt");
 
    // console.log(location.state);
 
@@ -25,7 +27,6 @@ const CreateThread = () => {
       
       event.preventDefault();
       const title = event.target.title.value;
-      const token = localStorage.getItem("jwt");
 
       const newThread = {
          title: title,
@@ -71,28 +72,37 @@ const CreateThread = () => {
 
    return(
 
-      <>
-      <RoleHeader />
-      {message && <p>{message}</p>}
-      <form onSubmit={handleCreateThread}>
+      <div className="root1">
+      <RoleHeader token={token} />
+      <div className="createThreadMain">
 
-         <div>
-            <label>
-               Title
-               <input type="text" name="title" />
-            </label>
-         </div>
-            
-         <div>
-            <label> 
-               Content
-               <textarea type="text" name="content" value={content} onChange={handleContentChange} />
-            </label>
-         </div>
+         {message && <p>{message}</p>}
 
-         <input type="submit" />
-      </form>
-    </>
+         <h1>New Thread</h1>
+
+         <form onSubmit={handleCreateThread}>
+
+            <div>
+               <label>
+                  <p>Title</p>
+                  
+                  <input type="text" maxLength={50} name="title" />
+               </label>
+            </div>
+               
+            <div>
+               <label> 
+                  <p>Content</p>
+                  
+                  <textarea type="text" maxLength={1000} name="content" value={content} onChange={handleContentChange} />
+               </label>
+            </div>
+
+            <input type="submit" className="createThreadBtn" value='Create' />
+         </form>
+
+      </div>
+    </div>
 
    );
 

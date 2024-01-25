@@ -8,7 +8,7 @@ import AddReply from "../../../components/replies/AddReply";
 import DeleteReply from "../../../components/replies/DeleteReply";
 import EditThread from "./EditThread";
 import EditReply from "../../../components/replies/EditReply";
-import './styles/detailsStyles.css'
+import './styles/threadDetails/detailsStyles.css'
 
 const ThreadDetailsPage = () => {
    useSecurityVerify();
