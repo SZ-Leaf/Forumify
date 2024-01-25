@@ -20,7 +20,7 @@ const DeleteReply = ({ replyId, onReplyDeleted }) => {
 
       if (deleteReplyResponseData.message === 'Reply deleted successfully.') {
          setIsDeleted(true);
-         console.log(isDeleted);
+         // console.log(isDeleted);
 
          if (onReplyDeleted) {
             onReplyDeleted();
@@ -46,7 +46,7 @@ const DeleteReply = ({ replyId, onReplyDeleted }) => {
 
    return (
       <>
-         {!isDeleted && <button onClick={confirmDelete}>Delete</button>}
+         {!isDeleted && <button className="deleteReply" onClick={confirmDelete}>Delete</button>}
       </>
    );
 

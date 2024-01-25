@@ -66,7 +66,9 @@ const ThreadDetailsPage = () => {
    
    
    const handleRefresh = () => {
-      window.location.reload(); // Reload the page
+      setTimeout(() => {
+         window.location.reload();
+      }, 1000); // Reload the page
    };
 
 
@@ -81,21 +83,21 @@ const ThreadDetailsPage = () => {
                            <div className="thread-div">
                               <h2>{thread.data.title}</h2>
                               <p className="threadContent">{thread.data.content}</p>
+
                               <div className="credentials">
-                                 <div>
-                                 <p>Created at: {new Date(thread.data.createdAt).toLocaleString()} UTC</p>
                                  <p>Author: {thread.data.User?.username}</p>
-                                 </div>
-                                 <div className="edit-delete-div">
+                                 <p>Created at: {new Date(thread.data.createdAt).toLocaleString()} UTC</p>
+                                 <p>Updated at: {new Date(thread.data.updatedAt).toLocaleString()} UTC</p>
+                              </div>
+                                 <>
                                  {getLoggedInUserDetails()?.userId === thread.data.UserId ||
                                  getLoggedInUserDetails()?.roleId === 1 ? (
-                                    <>
-                                    <DeleteThread threadId={thread.data.id} onDelete={() => handleDeleteThread(thread.data.id)} />
-                                    <EditThread threadId={thread.data.id} />
-                                    </>
+                                    <div className="edit-delete-div">
+                                    <DeleteThread id="deleteThreadBtn" threadId={thread.data.id} onReplyDeleted={() => handleDeleteThread(thread.data.id)} />
+                                    <EditThread id="editThreadBtn" threadId={thread.data.id} />
+                                    </div>
                                  ) : null}
-                                 </div>
-                              </div>
+                              </>
                               
                            </div>
                            <AddReply threadId={thread.data.id} />
@@ -103,28 +105,30 @@ const ThreadDetailsPage = () => {
                         
                         <div className="replies">
                         
-                        {thread.data.Replies && thread.data.Replies.length > 0 ? (
-                           thread.data.Replies.map((reply) => (
+                           {thread.data.Replies && thread.data.Replies.length > 0 ? (
+                              thread.data.Replies.map((reply) => (
 
-                              <div key={reply.id} className="reply-div">
-                                 <p>{reply.content}</p>
-                                 <p>Author: {users && users.find((user) => user.id === reply.UserId)?.username}</p>
-                                 <p>Created at: {new Date(reply.createdAt).toLocaleString()} UTC</p>
-                                 {getLoggedInUserDetails()?.userId === reply.UserId ||
-                                 getLoggedInUserDetails()?.roleId === 1 ? (
-                                 
-                                 <>
-                                 {/* <button><Link to={`/reply/edit/${filteredReply.id}`}>Edit</Link></button> */}
-                                 <EditReply replyId={reply.id} />
-                                 <DeleteReply replyId={reply.id} onReplyDeletedt={handleRefresh}/>
-                                 
-                                 </>
-                                 ) : null}
-                              </div>
-                           ))
-                        ) : (
-                           <p>No replies yet.</p>
-                        )}
+                                 <div key={reply.id} className="reply-div">
+                                    <p className="replyContent">{reply.content}</p>
+                                    <div className="replyCredentials">
+                                       <p>Author: {users && users.find((user) => user.id === reply.UserId)?.username}</p>
+                                       <p>Created at: {new Date(reply.createdAt).toLocaleString()} UTC</p>
+                                       <p>Edited at: {new Date(reply.updatedAt).toLocaleString()} UTC</p>
+                                    </div>
+                                    
+                                    {getLoggedInUserDetails()?.userId === reply.UserId ||
+                                    getLoggedInUserDetails()?.roleId === 1 ? (
+                                    
+                                    <div className="editDeleteReply">
+                                       <DeleteReply replyId={reply.id} onReplyDeleted={handleRefresh}/>
+                                       <EditReply replyId={reply.id} /> 
+                                    </div>
+                                    ) : null}
+                                 </div>
+                              ))
+                           ) : (
+                              <p>No replies yet.</p>
+                           )}
                         
                         </div>
 

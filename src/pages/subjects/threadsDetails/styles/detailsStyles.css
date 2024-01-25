@@ -1,10 +1,17 @@
 .threadDetails-main {
-  min-height: 100%;
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(39, 55, 77);
-  justify-content: space-evenly;
-  overflow: hidden;
+  justify-content: center;
+  min-height: 50%;
+  max-height: 90%;
+  overflow: scroll;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+.threadDetails-main .validationContent {
+  font-family: "Courier New", Courier, monospace;
+  color: #9e081e;
+  font-weight: 600;
 }
 .threadDetails-main .main-threadDiv {
   display: flex;
@@ -14,9 +21,10 @@
   height: -moz-fit-content;
   height: fit-content;
   padding-top: 20px;
+  width: 92%;
 }
 .threadDetails-main .main-threadDiv .thread-div {
-  width: 90%;
+  width: 100%;
   height: -moz-fit-content;
   height: fit-content;
   background-color: #D9D9D9;
@@ -33,30 +41,223 @@
   width: 100%;
   border-bottom: 1px solid black;
   padding: 5px;
+  font-size: 18px;
 }
 .threadDetails-main .main-threadDiv .thread-div .credentials {
   width: 100%;
   display: flex;
   padding: 5px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid black;
 }
-.threadDetails-main .main-threadDiv .thread-div .credentials div {
+.threadDetails-main .main-threadDiv .thread-div .credentials :first-child {
+  width: 100%;
+}
+.threadDetails-main .main-threadDiv .thread-div .credentials p {
   width: 50%;
+  font-size: 12px;
+  letter-spacing: 0.5px;
 }
-.threadDetails-main .main-threadDiv button {
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+  gap: 10px;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div button {
+  height: 25px;
+  border-radius: 15px;
+  border: 1px solid black;
+  color: white;
+  cursor: pointer;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div #deleteThreadBtn {
+  background-color: #9e081e;
+  width: 70px;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div #deleteThreadBtn:hover {
+  color: #9e081e;
+  background-color: rgb(255, 144, 144);
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div #editThreadBtn {
+  background-color: #4CA676;
+  width: 100px;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div #editThreadBtn:hover {
+  background-color: #6fce9b;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  font-weight: bold;
+  justify-content: center;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div form div {
+  width: 100%;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div form .titleTextArea {
+  border-radius: 10px;
+  width: 100%;
+  resize: none;
+  height: 25px;
+  padding: 5px;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div form .contentTextArea {
+  border-radius: 10px;
+  width: 100%;
+  resize: none;
+  height: 200px;
+  padding: 5px;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div form .submit {
+  color: white;
+  background-color: #4CA676;
+  border-radius: 10px;
+  height: 23px;
+  padding: 0 5px 0 5px;
+}
+.threadDetails-main .main-threadDiv .thread-div .edit-delete-div form .submit:hover {
+  cursor: pointer;
+  background-color: #6fce9b;
+}
+.threadDetails-main .main-threadDiv .addReplyBtn {
   width: 20%;
   height: -moz-fit-content;
   height: fit-content;
+  border-radius: 10px;
+  background-color: #4CA676;
+  color: white;
+  font-size: 16px;
 }
-.threadDetails-main .main-threadDiv form {
+.threadDetails-main .main-threadDiv .addReplyBtn:hover {
+  cursor: pointer;
+  background-color: #6fce9b;
+}
+.threadDetails-main .main-threadDiv .addReplyForm {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.threadDetails-main .main-threadDiv form div {
+.threadDetails-main .main-threadDiv .addReplyForm div {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
-.threadDetails-main .main-threadDiv form div label {
+.threadDetails-main .main-threadDiv .addReplyForm div label {
   width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
+  color: white;
+  gap: 5px;
+}
+.threadDetails-main .main-threadDiv .addReplyForm div label .replyContentInput {
+  resize: none;
+  border-radius: 10px;
+  height: 60px;
+  background-color: aliceblue;
+  padding: 5px;
+  border: solid 2px black;
+}
+.threadDetails-main .main-threadDiv .addReplyForm .addReplySubmit {
+  width: 70px;
+  border-radius: 20px;
+  background-color: rgb(78, 255, 47);
+}
+.threadDetails-main .main-threadDiv .addReplyForm .addReplySubmit:hover {
+  cursor: pointer;
+}
+.threadDetails-main .replies {
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.threadDetails-main .replies .reply-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #D9D9D9;
+  border-radius: 15px;
+}
+.threadDetails-main .replies .reply-div .replyContent {
+  border-bottom: 1px solid black;
+  padding: 5px;
+  width: 100%;
+  font-size: 17px;
+}
+.threadDetails-main .replies .reply-div .replyCredentials {
+  font-size: 12px;
+  padding: 5px;
+  border-bottom: solid 1px black;
+  width: 100%;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 15px;
+  padding: 5px;
+  align-items: center;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply button {
+  height: 25px;
+  color: white;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply .editReply {
+  border-radius: 10px;
+  background-color: #4CA676;
+  padding: 0 5px 0 5px;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply .editReply:hover {
+  background-color: #6fce9b;
+  cursor: pointer;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply .deleteReply {
+  border-radius: 10px;
+  background-color: #9e081e;
+  padding: 0 5px 0 5px;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply .deleteReply:hover {
+  background-color: rgb(255, 144, 144);
+  cursor: pointer;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply form div {
+  width: 100%;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply form div p {
+  font-weight: 700;
+  text-align: center;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply form div textarea {
+  width: 100%;
+  resize: none;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply form .submit {
+  color: white;
+  background-color: #4CA676;
+  border-radius: 10px;
+  height: 23px;
+  padding: 0 5px 0 5px;
+}
+.threadDetails-main .replies .reply-div .editDeleteReply form .submit:hover {
+  cursor: pointer;
+  background-color: #6fce9b;
 }/*# sourceMappingURL=detailsStyles.css.map */

@@ -66,13 +66,13 @@ const EditReply = ({replyId}) =>{
 
    return(
       <>
-         <button onClick={handleEditReplyButtonClick}>Edit Reply</button>
-         {message && <p>{message}</p>}
+         <button className="editReply" onClick={handleEditReplyButtonClick}>Edit Reply</button>
+         {message && <p className="validationContent">{message}</p>}
          {showForm && ( // Render the form only if showForm is true
             <form onSubmit={handleEditReply}>
                <div>
                   <label>
-                  Content
+                  <p>Content</p>
                   <textarea
                      type="text"
                      name="content"
@@ -82,7 +82,7 @@ const EditReply = ({replyId}) =>{
                   </label>
                </div>
 
-               <input type="submit" />
+               <input className="submit" type="submit" />
             </form>
          )}
       </>

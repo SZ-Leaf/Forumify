@@ -1,0 +1,114 @@
+.profileMain{
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 20px;
+   padding: 20px 0 20px 0;
+   max-height: 90%;
+   overflow: scroll;
+   // color: white;
+   h2{
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 26px;
+   }
+   h3{
+      color: white;
+      width: 100%;
+   }
+
+   .edit-delete-div{
+      width: 100%;
+      display: flex;
+      padding: 5px;
+      align-items: center;
+      flex-wrap: wrap;
+      overflow: scroll;
+      gap: 10px;
+      button{
+         height: 25px;
+         border-radius: 15px;
+         border: 1px solid black;
+         color: white;
+         cursor: pointer;
+      }
+      #deleteThreadBtn{
+         background-color: #9e081e;
+         width: 70px;
+         &:hover{
+            color: #9e081e;
+            background-color: rgb(255, 144, 144);
+         }
+      }
+      .deleteReply{
+         background-color: #9e081e;
+         width: 70px;
+         &:hover{
+            color: #9e081e;
+            background-color: rgb(255, 144, 144);
+         }
+      }
+      .toThread{
+         a{
+            text-decoration: none;
+            color: white;
+         }
+         background-color: #4CA676;
+         width: 100px;
+         &:hover{
+            background-color: #6fce9b;
+         }
+      }
+   }
+
+   .threadList{
+      width: 90%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      
+
+      .ownThreadDiv{
+         width: 100%;
+         height: fit-content;
+         background-color: #D9D9D9;
+         border-radius: 15px;
+         display: flex;
+         flex-wrap: wrap;
+
+         h4{
+            width: 100%;
+            border-bottom: 1px solid black;
+            padding: 5px;
+         }
+         .threadContent{
+            width: 100%;
+            border-bottom: 1px solid black;
+            padding: 5px;
+            font-size: 18px;
+         }
+      }
+   }
+
+   .replyList{
+      width: 85%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .replyDiv{
+         width: 100%;
+         display: flex;
+         flex-wrap: wrap;
+         background-color: #D9D9D9;
+         border-radius: 10px;
+         p{
+            width: 100%;
+            padding: 5px;
+            border-bottom: solid 1px black;
+         }
+      }
+   }
+}

@@ -63,14 +63,14 @@ const AddReply = ({threadId}) => {
 
    return(
       <>
-         <button onClick={handleAddReplyButtonClick}>Add Reply</button>
+         <button className="addReplyBtn" onClick={handleAddReplyButtonClick}>Add Reply</button>
          {message && <p>{message}</p>}
          {showForm && ( // Render the form only if showForm is true
-            <form onSubmit={handleAddReply}>
+            <form className="addReplyForm" onSubmit={handleAddReply}>
                <div>
                   <label>
-                  Content
-                  <textarea
+                  Reply Content
+                  <textarea className="replyContentInput"
                      type="text"
                      name="content"
                      value={content}
@@ -79,7 +79,7 @@ const AddReply = ({threadId}) => {
                   </label>
                </div>
 
-               <input type="submit" />
+               <input className="addReplySubmit" type="submit" />
             </form>
          )}
       </>

@@ -1,5 +1,8 @@
 *{
    overflow: hidden;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 .header{
    width: 100%;
@@ -7,6 +10,7 @@
 }
 #root{
    height: 100%;
+   background-color: rgb(39,55,77);
 }
 .root1{
    height: 100%;

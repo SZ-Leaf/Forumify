@@ -40,7 +40,7 @@ const DeleteThread = ({ threadId, onDelete }) => {
 
    return (
       <>
-         {!isDeleted && <button onClick={confirmDelete}>Delete</button>}
+         {!isDeleted && <button id="deleteThreadBtn" onClick={confirmDelete}>Delete</button>}
       </>
    );
 

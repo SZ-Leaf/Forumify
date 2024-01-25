@@ -72,30 +72,33 @@ const EditThread = ({threadId}) => {
 
    return(
       <>
-         <button onClick={handleAddReplyButtonClick}>Edit Thread</button>
-         {message && <p>{message}</p>}
+         <button id="editThreadBtn" onClick={handleAddReplyButtonClick}>Edit Thread</button>
+         {message && <p className="validationContent">{message}</p>}
          {showForm && ( // Render the form only if showForm is true
             <form onSubmit={handleReplyEdit}>
                <div>
-                  <label>Title
-                  <textarea
+                  <label>
+                  <p>Title</p>
+                  <textarea className="titleTextArea"
                      type="text"
                      name="title"
+                     maxLength={50}
                   /></label>
                </div>
                <div>
                   <label>
-                  Content
-                  <textarea
+                  <p>Content</p>
+                  <textarea className="contentTextArea"
                      type="text"
                      name="content"
+                     maxLength={1000}
                      value={content}
                      onChange={handleContentChange}
                   />
                   </label>
                </div>
 
-               <input type="submit" />
+               <input className="submit" type="submit" />
             </form>
          )}
       </>

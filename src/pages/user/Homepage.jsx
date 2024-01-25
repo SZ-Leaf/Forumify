@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import './homepagestyle/homeStyle.css'
 
 const HomePage = () => {
 
@@ -80,6 +81,13 @@ const HomePage = () => {
       const registerResponseData = await registerResponse.json();
       const token = registerResponseData.data;
 
+      if (registerResponse.status === 400) {
+         setMessage("Existing Credentials.");
+      } 
+      // else {
+      //    setMessage("Error Creating Thread.");
+      // }
+
       if (token) {
          localStorage.setItem("jwt", token);
          setMessage("Register Succesfull, please login");
@@ -104,22 +112,29 @@ const HomePage = () => {
    };
 
    return (
-      <>
-         {message && <p>{message}</p>}
-         <h1>Welcome to Forumify</h1>
+      <div className="homeMain">
+         <h1 className="homeTitle">Welcome to Forumify</h1>
+         {message && <p className="loginVerify">{message}</p>}
          <form onSubmit={handleSubmit}>
+
             <label>
-               username
-               <input type="text" name="username" />
+
+               <p>Username</p>
+               
+               <input type="text" maxLength={25} name="username" />
             </label>
+
             <label>
-               password
-               <input type="password" name="password" />
+               
+               <p>Password</p>
+               
+               <input type="password" maxLength={25} name="password" />
             </label>
-            <input type="submit" name="login" value="Login" />
-            <input type="submit" name="register" value="Register" />
+
+            <input className="loginButtons" type="submit" name="login" value="Login" />
+            <input className="loginButtons" type="submit" name="register" value="Register" />
          </form>
-      </>
+      </div>
    );
 };
 

@@ -1,0 +1,107 @@
+.profileMain {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0 20px 0;
+  max-height: 90%;
+  overflow: scroll;
+}
+.profileMain h2 {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 26px;
+}
+.profileMain h3 {
+  color: white;
+  width: 100%;
+}
+.profileMain .edit-delete-div {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+  gap: 10px;
+}
+.profileMain .edit-delete-div button {
+  height: 25px;
+  border-radius: 15px;
+  border: 1px solid black;
+  color: white;
+  cursor: pointer;
+}
+.profileMain .edit-delete-div #deleteThreadBtn {
+  background-color: #9e081e;
+  width: 70px;
+}
+.profileMain .edit-delete-div #deleteThreadBtn:hover {
+  color: #9e081e;
+  background-color: rgb(255, 144, 144);
+}
+.profileMain .edit-delete-div .deleteReply {
+  background-color: #9e081e;
+  width: 70px;
+}
+.profileMain .edit-delete-div .deleteReply:hover {
+  color: #9e081e;
+  background-color: rgb(255, 144, 144);
+}
+.profileMain .edit-delete-div .toThread {
+  background-color: #4CA676;
+  width: 100px;
+}
+.profileMain .edit-delete-div .toThread a {
+  text-decoration: none;
+  color: white;
+}
+.profileMain .edit-delete-div .toThread:hover {
+  background-color: #6fce9b;
+}
+.profileMain .threadList {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.profileMain .threadList .ownThreadDiv {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #D9D9D9;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.profileMain .threadList .ownThreadDiv h4 {
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+.profileMain .threadList .ownThreadDiv .threadContent {
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  font-size: 18px;
+}
+.profileMain .replyList {
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.profileMain .replyList .replyDiv {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+}
+.profileMain .replyList .replyDiv p {
+  width: 100%;
+  padding: 5px;
+  border-bottom: solid 1px black;
+}/*# sourceMappingURL=profileStyle.css.map */
