@@ -158,4 +158,37 @@
 }
 .main .threadsDiv .article .threadPart2 a:hover {
   background-color: #4CA676;
+}
+
+@media screen and (max-width: 700px) {
+  .main .threadsDiv {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .main .threadsDiv .article {
+    height: -moz-fit-content;
+    height: fit-content;
+    flex-wrap: wrap;
+    border-radius: 20px;
+  }
+  .main .threadsDiv .article .threadPart1 {
+    width: 100%;
+  }
+  .main .threadsDiv .article .threadPart1 h2 {
+    border: none;
+  }
+  .main .threadsDiv .article .threadPart1 div {
+    border-right: none;
+    border-bottom: solid 0.5px black;
+    font-size: 14px;
+  }
+  .main .threadsDiv .article .threadPart2 {
+    width: 100%;
+  }
+  .main .threadsDiv .article .threadPart2 a {
+    height: 100%;
+  }
+  .main .threadsDiv .article .threadPart2 button {
+    height: 100%;
+  }
 }/*# sourceMappingURL=style.css.map */

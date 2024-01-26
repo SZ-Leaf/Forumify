@@ -71,3 +71,20 @@
       }
    }
 }
+
+@media screen and (max-width: 700px){
+
+
+   .body .subjectbody .main-subject-div .linksDiv {
+        flex-direction: column;
+        height: 85%;
+        align-items: center;
+        gap: 10px;
+        .subject-div{
+         width: 70%;
+         .subjectTitle{
+            height: fit-content;
+         }
+        }
+   }
+}

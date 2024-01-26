@@ -169,3 +169,38 @@
       }
    }
 }
+
+@media screen and (max-width:700px) {
+
+   .main{
+      .threadsDiv{
+         height: fit-content;
+         .article{
+            height: fit-content;
+            flex-wrap: wrap;
+            border-radius: 20px;
+            .threadPart1{
+               width: 100%;
+               h2{
+                  border: none;
+               }
+               div{
+                  border-right: none;
+                  border-bottom: solid 0.5px black;
+                  font-size: 14px;
+               }
+            }
+            .threadPart2{
+               width: 100%;
+               a{
+                  height: 100%;
+               }
+               button{
+                  height: 100%;
+               }
+            }
+         }
+      }
+   }
+   
+}

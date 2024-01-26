@@ -111,4 +111,37 @@
          }
       }
    }
+
+   .passwordChange{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 140px;
+      .passwordManagerButton{
+         max-height: fit-content;
+         border-radius: 15px;
+         padding: 1px;
+         color: white;
+         background-color: black;
+         &:hover{
+            cursor: pointer;
+         }
+      }
+      .passwordChangeForm{
+         color: white;
+         display: flex;
+         flex-direction: column;
+         max-width: 140px;
+         gap: 2px;
+         .changePasswordButton{
+            border-radius: 15px;
+            padding: 1px;
+            color: white;
+            background-color: black;
+            &:hover{
+               cursor: pointer;
+            }
+         }
+      }
+   }
 }

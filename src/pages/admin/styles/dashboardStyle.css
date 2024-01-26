@@ -1,0 +1,41 @@
+.root1 .dashboardTitle {
+  color: white;
+  font-size: 7vw;
+  width: 100%;
+  text-align: center;
+}
+.root1 .dashboardList {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.root1 .dashboardList .dbListItem {
+  text-decoration: none;
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(246, 243, 238);
+  border: 2px solid black;
+}
+.root1 .dashboardList .dbListItem a {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  line-height: 40px;
+}
+.root1 .dashboardList .dbListItem:hover {
+  background-color: black;
+}
+.root1 .dashboardList .dbListItem:hover a {
+  color: white;
+}
+
+@media screen and (max-width: 700px) {
+  .root1 .dashboardTitle {
+    font-size: 12vw;
+    margin: 20px 0 20px 0;
+  }
+}/*# sourceMappingURL=dashboardStyle.css.map */

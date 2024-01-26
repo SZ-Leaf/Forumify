@@ -36,6 +36,49 @@ const ProfilePage = () => {
    const handleRefresh = () => {
       window.location.reload(); // Reload the page
    };
+
+   const [newPassword, setNewPassword] = useState("");
+   const [confirmPassword, setConfirmPassword] = useState("");
+   const [passwordChangeSuccess, setPasswordChangeSuccess] = useState(false);
+   const [passwordChangeError, setPasswordChangeError] = useState("");
+
+   const handleUpdatePassword = async () => {
+      if (newPassword !== confirmPassword) {
+         setPasswordChangeError("Passwords do not match.");
+         return;
+      }
+
+      try {
+         const response = await fetch(`http://localhost:3001/api/users/${tokenDecode.UserId}`, {
+            method: "PUT",
+            headers: {
+               "Content-Type": "application/json",
+               Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ password: newPassword }),
+         });
+
+         if (response.ok) {
+            setPasswordChangeSuccess(true);
+            setNewPassword("");
+            setConfirmPassword("");
+         } else {
+            const errorData = await response.json();
+            setPasswordChangeError(errorData.message || "Password change failed.");
+         }
+      } catch (error) {
+         console.error("Password change error:", error);
+         setPasswordChangeError("Password change failed. Please try again later.");
+      }
+   };
+
+   const [showPasswordForm, setShowPasswordForm] = useState(false);
+
+   const togglePasswordForm = () => {
+      setShowPasswordForm((prev) => !prev);
+      setPasswordChangeSuccess(false);
+      setPasswordChangeError("");
+   };
    
 
    return(
@@ -44,6 +87,35 @@ const ProfilePage = () => {
 
          <div className="profileMain">
             <h2>Welcome {tokenDecode.data}</h2>
+
+            <div className="passwordChange">
+               <button className="passwordManagerButton" type="button" onClick={togglePasswordForm}>
+                  Password Manager
+               </button>
+               {showPasswordForm && (
+                  <form className="passwordChangeForm">
+                     <label className="passwordLabel">New Password:</label>
+                     <input
+                        className="passwordInput"
+                        type="password"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                     />
+                     <label className="passwordLabel">Confirm Password:</label>
+                     <input
+                        className="passwordInput"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                     />
+                     <button className="changePasswordButton" type="button" onClick={handleUpdatePassword}>
+                        Change Password
+                     </button>
+                     {passwordChangeSuccess && <p className="successMessage">Password changed successfully!</p>}
+                     {passwordChangeError && <p className="errorMessage">{passwordChangeError}</p>}
+                  </form>
+               )}
+            </div>
 
             <div className="threadList">
                <h3>Own Threads List</h3>

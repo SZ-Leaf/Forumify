@@ -48,12 +48,14 @@
                               hsl(206, 23%, 40%) 85.5%,
                               hsl(206, 23%, 42%) 92.6%,
                               hsl(206, 23%, 28%) 100%);
+   
+   
+   nav{
+      height: 100%;
+      width: 35%;
+   }
 }
 
-nav{
-   min-height: 100%;
-   width: 35%;
-}
 
 nav ul {
    list-style-type: none;
@@ -139,4 +141,30 @@ nav ul li span:nth-child(3) {
 
 nav ul li span:nth-child(4) {
    --n: 4;
+}
+
+@media screen and (max-width: 700px){
+
+   .header{
+      flex-wrap: wrap;
+      overflow: hidden;
+      .logolink{
+         margin-left: 0;
+         width: 100%;
+         height: 50%;
+         font-size: 16px;
+         .logo{
+            line-height: unset;
+         }
+      }
+      nav{
+         width: 100%;
+         height: 50%;
+      }
+   }
+   nav ul li{
+      height: 80%;
+      font-size: 14px;
+      min-width: fit-content;
+   }
 }

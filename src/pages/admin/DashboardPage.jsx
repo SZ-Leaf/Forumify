@@ -1,24 +1,25 @@
 import { useSecurityVerify } from "../../components/securityCheck/security";
 import AdminHeader from "../../components/headers/AdminHeader";
 import { Link } from "react-router-dom";
+import './styles/dashboardStyle.css'
 
 const DashboardPage = () => {
   useSecurityVerify();
 
   return (
-    <>
+    <div className="root1">
       <AdminHeader />
-      <h2>Welcome Administrator</h2>
+      <h2 className="dashboardTitle">Dashboard</h2>
 
-      <ul>
-        <li>
+      <ul className="dashboardList">
+        <li className="dbListItem">
           <Link to="/admin/users-panel" className="dashboardlink"><p>Users Panel</p></Link>
         </li>
-        <li>
-          <Link to="/" className="subjectslink"><p>Reported Threads</p></Link>
+        <li className="dbListItem">
+          <Link to="/"><p>Reported Threads</p></Link>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

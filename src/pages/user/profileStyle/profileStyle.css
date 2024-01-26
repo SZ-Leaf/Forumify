@@ -104,4 +104,37 @@
   width: 100%;
   padding: 5px;
   border-bottom: solid 1px black;
+}
+.profileMain .passwordChange {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 140px;
+}
+.profileMain .passwordChange .passwordManagerButton {
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  border-radius: 15px;
+  padding: 1px;
+  color: white;
+  background-color: black;
+}
+.profileMain .passwordChange .passwordManagerButton:hover {
+  cursor: pointer;
+}
+.profileMain .passwordChange .passwordChangeForm {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 140px;
+  gap: 2px;
+}
+.profileMain .passwordChange .passwordChangeForm .changePasswordButton {
+  border-radius: 15px;
+  padding: 1px;
+  color: white;
+  background-color: black;
+}
+.profileMain .passwordChange .passwordChangeForm .changePasswordButton:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=profileStyle.css.map */

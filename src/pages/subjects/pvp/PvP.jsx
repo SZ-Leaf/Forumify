@@ -7,7 +7,7 @@ import DeleteThread from "../../../components/threads/threadDelete";
 import RoleHeader from "../../../components/headers/RoleHeaderCheck";
 import "../styling/style.css"
 
-const GamesPage = () => {
+const PvpPage = () => {
 
    const navigate = useNavigate();
    const token = localStorage.getItem("jwt");
@@ -131,4 +131,4 @@ const GamesPage = () => {
    // );
 };
 
-export default GamesPage;
+export default PvpPage;

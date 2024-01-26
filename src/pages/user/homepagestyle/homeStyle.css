@@ -41,4 +41,11 @@
 .homeMain form .loginButtons {
   padding: 5px;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .homeMain .homeTitle {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }/*# sourceMappingURL=homeStyle.css.map */
