@@ -184,6 +184,7 @@
   }
   .main .threadsDiv .article .threadPart2 {
     width: 100%;
+    padding: 8px 0 8px 0;
   }
   .main .threadsDiv .article .threadPart2 a {
     height: 100%;

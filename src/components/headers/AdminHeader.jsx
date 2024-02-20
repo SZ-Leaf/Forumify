@@ -20,7 +20,7 @@ const AdminHeader = () => {
 
    return (
       <header className="header">
-         <Link to="/subjects" className="logolink"><h1 className="logo">Forumify</h1></Link>
+         <Link to="/subjects" className="logolink"><h1 className="logo">e-WoW Community</h1></Link>
          <nav>
             <ul className="nav-list">
 

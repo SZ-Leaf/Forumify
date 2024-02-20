@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useSecurityVerify } from "../../../components/securityCheck/security";
 
-
+// 
+// save content and title values in new edit form
+// 
 const EditThread = ({threadId}) => {
 
    useSecurityVerify();

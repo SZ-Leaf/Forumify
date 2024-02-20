@@ -142,7 +142,7 @@ const MoviesPage = () => {
          <RoleHeader token={token} />
          <div className="main">
             <div className="titleDiv">
-               <h1>PvP Threads</h1>
+               <h1>Raid Threads</h1>
                <button onClick={() => navigate("/thread/create", { state : { subjectId: 3 } })}>
                   Create New Thread
                   <span></span>
